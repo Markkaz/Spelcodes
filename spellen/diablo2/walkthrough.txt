@@ -1,0 +1,411 @@
+ACT 1
+~~~~~
+
+Je start in het Rogue Encampment.
+Verken het kamp en praat met alle NPC`s.
+Je zal in Act 1 vooral terugkeren naar Charsi (om wapens te kopen, te verkopen en items te laten repareren) en Akara (om potions, scrolls, staffs en wands te kopen en om je gezondheid- en manareservoir gratis vol te laten lopen).
+Links onderaan vind je Gheed, een nogal onvriendelijk personage dat allerlei rommel aanbiedt en je de mogelijkheid laat een gokje te wagen (Gamble).
+Dit houdt in dat je voor veel geld een item koopt waarvan je de eigenschappen niet kent.
+Ik heb nergens in heel Diablo 2 een Gamble gedaan waar ik tevreden over was, dus ik kan je dan ook afraden om geld te stoppen in het gokken op items.
+Diablo spelers hebben uiteraard onmiddelijk gemerkt dat er niemand is om tegen betaling items te identificeren.
+Je moet in het begin dan ook gebruik maken van identify scrolls en later, wanneer je Cain hebt bevrijd, zal deze uit dank gratis al je items identificeren.
+Merk ook op dat je geen mana- en rejuvenationpotions kan kopen.
+Deze potions moet je dan ook goed bewaren.
+Dit neemt wel redelijk veel plaats in maar eenmaal je de Horadric Cube hebt gevonden kan je drie kleine potions omvormen tot een groteren potion.
+
+Wanneer je gesproken hebt met Akara zal de eerste quest geactiveerd worden nl. de Den of Evil.
+Erop af.
+Verlaat het kamp en begin de onmiddelijke omgeving naast het kamp (the Blood Moor) te verkennen.
+Een goede regel om ervoor te zorgen dat je het overzicht bewaart en dat je niets vergeet op te pikken is: ruim eerst het niveau waarop je je bevindt op en ga dan pas naar een ander aangelegen of lager gelegen niveau.
+Dus, ruim de Blood Moor op en ga dan naar beneden naar de Den of Evil.
+Hier kan je uitgebreid kennismaken met twee nieuwe aspecten van Diablo 2 nl. het feit dat sommige tegenstanders andere tegenstanders opnieuw tot leven kunnen wekken en de Champion en Super Unique (SU) creatures.
+De Champions zijn gewoon sterkere versies van een bestaande tegenstaander en de SU`s zijn een verbeterde versie van de Champions.
+De Champions en de SU`s worden in een andere kleur gepresenteerd dan het basiswezen waarvan ze zijn afgeleid zodat je onmiddelijk ziet dat je met sterke tegenstanders te maken hebt.
+In de Den of Evil kom je je eerste Su tegenstander tegen nl. de zombie Corpsefire.
+Wanneer je deze tegenstander aanduidt met je cursor, zal je merken dat er onder de naam Corpsefire Spectral Hit staat.
+SU wezens hebben immers ook enkele specials (zoals magie of poison attack) in huis en dit maakt dat je ze zeker niet mag onderschatten.
+Vermijd te alen koste dat je wordt ingesloten door een meute tegenstanders met daarbij ook een SU tegenstander.
+Nadat je Corpsefire hebt verslagen is het gewoon nog een kwestie van de Den of Evil te zuiveren van al het gespuis en het zonlicht zal de Den opnieuw binnendringen.
+Ga naar Akara en haal je beloning op.
+Van Akara krijg je training in een Skill naar keuze.
+Zulke momenten zijn zeer zeldzaam in Diablo 2 dus besteed het punt goed.
+Ga naar Kashya.
+Zij zal je vertellen over Blood Raven, een kapitein van de Roques, die is ingepalmd door Andariel, de eindboss van Act 1.
+Je kan Blood Raven vinden in de Burial Grounds.
+
+Ga via de Blood Moor naar de Cold Plains.
+Hier zijn de tegenstanders al wat sterker, dat zal je meteen merken, maar er is nog geen reden tot paniek.
+Begin dan ook langzaam de Cold Plains af te gaan en je zal vroeg of laat de Fallen Shaman Bishibosh (SU) tegenkomen.
+Deze Fallen Shaman is niet alleen sterk maar kan ook andere Fallen Shamans opnieuw tot leven wekken die dan op hun beurt opnieuw Falleen eenheden tot leven wekken.
+Je moet dan ook zo snel je kan Bishibosh om zeep helpen wil je niet terechtkomen in een eindeloze spiraal van geweld.
+Want denk eraan, een opnieuw tot leven gewekte tegenstander levert geen ervaringspunten op.
+Je kan dit dan ook niet uitbuiten om snel in ervaring te stijgen.
+Integendeel, je materiaal zal onnodig verslijten.
+Opvallend aan Bishibosh is dat hij magic resistance heeft waardoor hij vooral voor de Sorceress een lastige klant is.
+Nadat je de Cold Plains hebt gezuiverd ga je naar de Burial Grounds.
+Op deze begraafplaats vind je voornamelijk skeletten en zombies zodat je fel gebaat bent met een wapen dat 150% damage doet aan de Undead.
+Skeletten en zombies zijn geen probleem.
+Blood Raven is echter een taaie tante endit komt voornamelijk omdat ze 50% resistance to magic, fire, cold, lightning en poison heeft.
+Het koude staal is nog het best geschikt om ze om te brengen, alleen moet je ze nog te pakken krijgen want ze loopt steeds heen en weer.
+Nadat je Blood Raven hebt verslagen kan je de Crypt en het Mausoleum bezoeken.
+Hier vind je nog wat extra tegenstanders en vooral veel goud.
+De lastigste klant zit in de crypt, nl. een SU skelet genaamd Bonebreaker en dat kereltje heeft zijn naam niet gestolen.
+Een schedeltje kleiner maken is de boodschap.
+Ga hierna naar Kashya.
+Als dank krijg je gratis en voor niks een Rogue mee.
+Van dan af kan je bij Kashya ook Rogues huren tegen betaling.
+Ga naar Akara.
+Zij zal je vragen naar Tristram te reizen om Deckard Cain te gaan bevrijden.
+Dat is dus je volgende quest.
+Ga van de Cold Plains naar de Stony Field.
+Hier zal je veel Shamannesten vinden.
+In de buurt van de grote stenen (Cairn Stones) zal je de SU Rakanishu vinden, een Fallen Shaman.
+Hij is zeer snel en heeft o.a. 75% resistance to Lightning dus zeker niet met Lightning aanvallen als Sorceress.
+Ruim de Stony Field verder op en ga daarna de Cave in.
+Hier zal je o.a. de SU Coldcrow ontmoeten.
+Deze SU zal je leren hoe vervelend het is om te worden bestookt met Cold Damage.
+Hierna ga je naar de Underground Passage.
+Hier vind je o.a. Windigos die verdomd veel schade kunnen doen dus je doet er goed aan nog eens te herbronnen (opladen, beste items dragen, wapens repareren, potions kopen, ...) eer je de Underground Passage betreed.
+Zuiver de Underground Passage en ga naar de Dark Wood.
+Hier vind je de Tree of Inifuss.
+Klik erop en je zal een stuk van de schors van de boom krijgen.
+Op deze schors staat de volgorde waarin je de Cairn Stones moet aanraken om het magishe portaal naar Tristram te creëren.
+Ruim de Dark Wood verder op en je zal een sterke SU tegenstander genaamd Treehead Woodfist tegenkomen.
+Hij is zeer sterk en zeer snel maar is gelukkig voor de Sorceress zeer kwetsbaar wanneer je magische aanvallen pleegt.
+Cold Damage is ideaal om deze kolos af te houden.
+Ga nu terug naar het Rogue Encampment, ga herbronnen en praat met Akara.
+Zij zal het stuk schors van de boom van Inifuss ontcijferen.
+Ga nu terug naar the Stony Field en ga naar de Cairn Stones.
+Raak ze aan volgens de volgorde op de schors en een magisch portaal naar Tristram zal verschijnen.
+Zorg ervoor dat je goed voorbereid bent eer je naar Tristram gaat want Tristram is de moeilijkste locatie tot dan in het spel.
+
+Stap door het portaal, je zal uiterst rechts de Tristram map betreden.
+Belangrijk is dat je niet onmiddellijk naar het midden trekt waar Cain gevangen zit.
+Cain roept wel op een aandoenlijke manier << Help >> maar laat hem rustig nog wat in zijn kooi zitten.
+Het is niet dat zijn leven in onmiddellijk gevaar is.
+Blijf kort tegen de stenen rand en maak een beweging tegen de wijzers van de klok in.
+Zuiver eerst de buitenkant en mol de tegenstanders in de brandende huizen.
+Ga verder en je zal het lijk van Wirth tegenkomen.
+Pik het goud en zijn been op (belangrijk voor het Secret Cow level).
+Ga verder en je zal enkele taaie tegenstanders tegenkomen met als kers op de taart Griswold, die we nog kennen van deel 1.
+Deze keer is hij echter bezeten van het Kwade en moet hij een kopje kleiner worden gemaakt.
+Griswold is zeer taai maar slaat er gelukkig heel dikwijls naast.
+Nadat je Tristram hebt gezuiverd kan je Cain bevrijden.
+Cain cast een Town Portal naar het Rogue Encampment.
+Ga hen achterna.
+Hij is je dankbaar en zal vanaf dan al je items gratis identificeren.
+Ga naar Akara en ze zal je uit dank een goede ring geven.
+Ga nu terug naar de Dark Wood en van daar naar de Black Marsh.
+Zuiver het level en ga daarna naar de Forgotten Tower.
+Hier kan je vijf levels naar beneden.
+De belangrijkste tegenstander in deze toren is de Countess (SU), een omhooggevallen dametje dat nogal kwistig omspringt met allerlei vurige spells en een aardige punch in huis heeft.
+Je kan de Countess het best aanpakken vanop afstand met Poison, Lightning of Cold Damage (Necromancer, Amazone, Sorceress).
+De Paladin en de Barbarian kunnen hier best gebruik maken van een wapen met Cold Damage om de Countess te bevriezen zodat ze niet zo snel kan uithalen.
+In deze toren vind je vele items die nog niet geïndentificeerd zijn hetgeen de voornaamste reden is waarom je deze toren best zuivert nadat je Cain reeds hebt gered.
+Cain kan immers alle items gratis voor je identificeren.
+Ga terug naar het kamp en praat met Charsi.
+Zij begint te vertellen over de Horadric Malus, een hamer, die jij zou moeten terugbrengen.
+
+Ga van de Black Marsh naar het Tamoe Highland en ruim deze locatie op.
+Ga daarna naar de Monastery Gate en ga binnen naar het Outer Cloister en daarna naar de barracks.
+Tijdens deze tocht zal je geen uitzonderlijke tegenstanders tegen het lijf lopen.
+In de barracks vind je echter een SU tegenstander nl. the Smith, een kolos van een smid die niet van plan is om de Horadric Malus zonder slag of stoot af te staan.
+Deze smid is zeer sterk en taai dus bereid je voor op een serieus gevecht.
+Deze smid vanop afstand neerleggen is natuurlijk het beste idee maar als je Paladin of Barbarian bent zal je een close-combat gevecht moeten aangaan.
+Hou in ieder geval een aantal potions en eventueel ook een Town Portal achter de hand.
+Nadat je de smid hebt verslagen pik je de Horadric Malus op en ga je naar het Rogue Encampment.
+Laat de Jail nog even voor wat ze is.
+Geef de Horadric Malus aan Charsi en zij zal uit dank een item van magische kwaliteiten voorzien.
+Je moet uiteraard een item kiezen dat goed bij je personage past.
+De beste resultaten heb ik gehaald met een paar handschoenen en met een tweehandig slagzwaard.
+Keer terug naar de barracks en betreed de Jail.
+Hier moet je o.a. afrekenen met Pitspawn Fouldog, een SU om u tegen te zeggen want deze tegenstander kan heel wat Cold Damage oprakelen en zoals we tegen dan al weten is Cold Damage gruwelijk sterk in Diablo 2.
+Bovendien is deze Pitspawn zelf haast immuum voor Cold Damage dus je zal eens iets anders moeten proberen!
+Daarna ploeg je rustig verder naar het Inner Cloister en de Cathedral om uiteindelijk in de Catcombs terecht te komen.
+Hier moet je vier levels naar beneden en wacht je een zware taak nl. het liquideren van Andariel.
+Andariel is uiteraard ook een SU tegenstander en dan eentje met een furieuze Poison Attack en Poison Cloud.
+Items met Poison Resist zijn plots goud waard.
+Het probleem van Andariel is dat ze zowel vanop afstand als van kortbij zeer veel schade kan doen zodat niemand van de vijf klassen echt veilig is.
+Vooral de Necromancer kan het moeilijk krijgen tegen Andariel omdat zijn opgeroepen krijgers in één klap worden vernietigd door de Poison aanvallen.
+En aangezien de Necromancer geen goede ranged attack heeft aan het einde van Act 1 en niet het incasseringsvermogen heeft van de Barbarian of de Paladin wordt het even zwoegen.
+Doch denk eraan, als de nood het hoogst is, is de Scroll of Town Portal nabij.
+Nadat je Andariel hebt verslagen ga je terug naar het Rogue Encampment.
+Maak nog een laatste praatje met de aanwezigen en ga dan naar Warriv.
+Hij zal je naar het Oosten voeren, meerbepaald naar het stadje Lut Gholein.
+Heb geen angst dat je items in de stash zullen achterblijven.
+Deze worden automatisch ingeladen en afgezet in Lut Gholein en dat geldt ook voor de overgang tussen de volgende acts.
+
+ACT 2
+~~~~~
+
+Je komt aan in het stadje Lut Gholein.
+Neem gerust je tijd om Lut Gholein te verkennen en met de aanwezigen een praatje te slaan.
+Ook Deckard Cain is meegereisd en zal je items gratis blijven identificeren.
+De belangrijkste figuur in lut Gholein is Fara.
+Zij kan gratis je mana en gezondheidsreservoir aanvullen en je kan er wapens en magische items kopen en verkopen.
+Fara staat bovendien zeer dicht bij je stash dus dat scheelt wat loopwerk.
+Potions kan je bij Lysander of Drognan kopen.
+Eén van de NPC`s in Lut Gholein spreekt je spontaan aan.
+Het is Atma en zij heeft voor jou de eerste quest.
+In de riool zit de demon Radament die haar man heeft gedood.
+Jij moet de riool zuiveren en de demon doden.
+Normaal gezien moet je deze quest makkelijk kunnen voltooien met het materiaal dat je in Act 1 hebt gevonden.
+Het is dan ook niet nodig om van in het begin de fraaie nieuwe items te kopen die worden aangeboden in lut Gholein.
+De verleiding is groot maar de kans dat je een evenwaardig of beter item vindt is nog groter.
+De riool in dan maar en je zal snel merken dat alle tegenstanders in Act 2 volledig verschillen van die van Act 1 en dat maakt het zo boeiend om Diabio 2 te spelen.
+In de riool heb je het meest last van de mummies die giftige wolken verspreiden.
+Resist Poison of items die de Poison Duration verkorten zijn hier zeer welkom.
+Een vervelende klant hier is de Greater Mummy die andere mummies terug tot leven kan wekken.
+In deze Sewers vind je ook skeletten die je bespoken met Cold, Poison, Lightning en Fire damage (het gamma van de Necromancer skeletten).
+Vanaf Act 2 wordt het dragen van de juiste Resist items over de hele lijn van belang.
+Voel je nog niet helemaal zeker, dan kan je teruggaan naar Lut Gholein en op zoek gaan naar Greiz.
+Bij hem kan je een huurling onder de arm nemen.
+De huurlingen in Level 2 zijn echter niet veel soeps omdat ze weinig schade doen en het man aan man gevecht opzoeken(en dit in tegenstelling met de huurlingen van Act 1 en Act 3 die van afstand met pijlen of magie schade doen) maar ze leiden wel de aandacht af dus koop er eentje met een groot incasseringsvermogen en hoop dat hij het redelijk lang zal uithouden.
+Duik daarna opnieuw de riool.
+Stoot door tot level drie waar je Radament (SU) zal vinden.
+Radament is verrassend sterk en snel en is omringd door tal van andere tegenstanders.
+Schakel eerst het gevolg uit van Radament en tracht hem daarna zo snel mogelijk te doden want anders zal hij blijven undead wezens tot leven wekken.
+Nadat je hem hebt gedood kan je de Book of Skill oprapen.
+Hiermee kan je één skillpunt toekennen.
+Spendeer het wijs.
+Hier kunnen we meteen bij vermelden dat er blijkbaar vele spelers zijn die zich laten verrassen door het feit dat je naarmate het spel vordert, steeds minder snel je level ups krijgt. In het begin volgen de level ups mekaar zeer snel op en je kan dan ook vele skill points uitdelen.
+Maar dit blijft niet duren en zomaar aan alles één puntje geven om eens te zien wat het effect is, is zeker geen aan te beleven koers. Je kan er beter voor zorgen dat je zeer goed bent in een paar skills . In één van de kisten naast Radament vind je de Horadric scroll. Neem deze scroll mee en ga naar lut Gholein. Ga naar Atma en zij zal je vertellen dat de handelaars in lut Gholein hun waar goedkoper zullen aanbieden om je te bedanken. Deckard Cain vertelt je over de Horadric scroll en de Horadric staff waarna je tweede quest kan beginnen. Je zal twee stukken van de Horadric staff moeten vinden en samensmelten met de Horadric Cube. Ga nu doór de grote poort naar de woestijn. Je komt terecht in de Rocky Waste. Hier zal je alweer een geheel vernieuwde wezens aantreffen waarvan de leapers veel in aantal zijn. Dit zijn met afstand de meest vervelende beesten van heel het spel omdat ze zo moeilijk te raken zijn. In de Rocky Waste zitten ook enkele Champion tegenstanders die uitstekend materiaal laten vallen wanneer ze zijn geklopt. Net daarom mag je niet te vlug kopen.
+Ga nu naar de Dry Hills en ruim ook daar de boel op, ga naar het hoger gelegen platform en doe hetzelfde.
+Hier vind je een doorgang naar de Halls of the Dead.
+Ruim het level op en stoot door naar levels 2 en 3.
+Op level 3 vind je een SU tegenstander genaamd Bloodwitch, the Wild die Extra Strong onder haar naam heeft staan hetgeen betekent dat je best van afstand schade kan doen.
+Eenmaal je deze Bloodwitch hebt verslagen kan je op zoek gaan naar de koffer met daarin de Horadric Cube.
+Ga naar Cain en hij zal je uitleg geven over de Cube.
+Vanaf nu kan je edelstenen en potions samensmelten.
+Doe dit om plaats in je inventory en stash te sparen.
+Nu kan je op zoek naar de shaft.
+Ga naar de Far Oasis, ruim het level op en je zal Beetleburst (SU) ontmoeten die vrij makkelijk te doden is.
+Ga daarna naar beneden naar de Maggot`s Lair.
+Resist Poison wordt hier aanbevolen.
+Baan je een weg langs de vette larven en stoot langzaam maar zeker door naar level 3.
+Hier zal je uiteindelijk op een afschuwelijke grote vette worm stuiten genaamd Coldworm The Burrower (SU).
+Deze Coldworm ombrengen is op zich geen probleem, maar hij is omringd door tal van eieren die uitkomen op het moment dat jij daar net binnenkomt.
+Snel zijn is hier de boodschap dus haast je naar de Coldworm en dood hem zo snel je kan.
+Lukt dit niet, zet dan een pasje terug en versla eerst het gros van de kleinere larven die je in de smalle tunnels achterna komen en richt je daarna op de Coldworm.
+Raap de shaft op.
+Nu moet je op zoek naar de Headpiece van de staf.
+Ga van de Far Oasis naar de lost City.
+Het zal plots donker worden.
+Ruim het level op en je zal The Dark Elder ontmoeten (SU), een relatief trage SU die je makkelijk moet aankunnen.
+Ga rustig verder naar de Claw Viper tempel.
+Stoot door tot level 2 en je zal op Fangskin (!SU) stuiten die niet alleen Extra Fast is maar ook lightning Enchanted hetgeen van hem een taaie kerel maakt die krijgers zonder Lightning Resist kan afmaken voor ze er erg in hebben.
+Nadat je hem hebt verslagen, kan je het Altaar vernietigen.
+Je zal het Headpiece vinden en de zonsverduistering is ongedaan gemaakt.
+Smelt de Shaft en de Headpiece nu samen in de Horadric Cube.
+Aldus verkrijg je de Horadric Staff, een uitstekend wapen.
+Belangrijke opmerking: je mag de Horadric Staff nooit repareren omdat de Staff voldoende sterk is om het uit te houden tot aan Talrasha`s Tomb waar de staf zal verdwijnen nadat de opening naar Duriel is gecreëerd.
+Ga nu terug naar lut Gholein en praat met Drognan.
+Je zal nu wel het kasteel in mogen.
+Ga naar de Harem en ruim er stelselmatig alles op.
+Het enige probleem in de Harem zijn de talrijke skeletten met pijl en boog en de magische skeletten.
+Van afstand neerhalen met pijlen of magic of zeer snel neerkloppen is de boodschap.
+Aangezien er zeer vele kamers en obstakels zijn kan je de tegenstanders in kleine groepjes aanpakken.
+Ga van de Harem naar de Palace Cellar.
+Ruim verder op en op het derde niveau zal je een portaal vinden dat wordt bewaakt door Fire Eye, een SU die aardig wat Fire Damage gooit.
+Dood hem en zijn gevolg en ruim het level volledig op maar ga nog niet door het portaal.
+Ga even herladen in Lut Gholein en tracht een zo goed mogelijke configuratie van Defense en Resist items uit te werken.
+Zeer belangrijk is dat je op een hoge Resist Fire waarde staat alvorens je de Arcane Sanctuary binnengaat want de Fire Walls vliegen je er om de oren.
+Ga nu terug en door het portaal naar het Arcane Sanctuary.
+Merk meteen op dat het decor in kruisvorm is opgebouwd.
+Ook al kom je snel aan de Summoner, wacht met hem totdat je alle zijtakken hebt voltooid.
+Voorzichtigheid is geboden in het Arcane Sanctuary dus langzaam vorderen zodat je niet te veel vijanden tegelijk ontmoet en er steeds voor zorgen dat je snel een uitweg hebt zodat je de Fire Walls snel kan ontwijken.
+Vermijd te allen koste dat je ingesloten geraakt, want anders wordt het zeer moeilijk.
+Goed uitkijken naar items is ook belangrijk dus elke koffer openen.
+Zijn ze gesloten, ga dan sleutels kopen, want in het Arcane Sanctuary is de kans op het vinden van een Set Item zeven keer hoger dan in een doorsnee decor.
+Eenmaal je het Arcane Sanctuary hebt gezuiverd kan je de Summoner gaan aanpakken.
+Dit wezen doet wel lelijk door allerlei spells te casten maar al bij al is hij maar een povere tegenstander.
+Lees Horazon`s Journal en je verkrijgt het echte symbool van de graftombe van Tal Rasha.
+Ga nu door het portaal en je komt in de Canyon of the Magi.
+Activeer het teleport punt en ruim het gelijkvloers op.
+Doe dit rustig, want anders loop je het risico dat er plots vele tegenstanders tegelijk op je af komen.
+Eenmaal je het gelijkvloers hebt opgeruimd kan je beginnen aan de uitputtende slag om de graftombes.
+Er zijn zeven graftombes en alle zitten ze volgepropt met goud en goede items.
+Ga dan ook elke graftombe af. In één van deze 7 tombes vind je de SU Ancient Kaa the Soulless.
+Goed opletten voor Kaa want hij is tevens omringd door zijn maats die hij opnieuw uit de doden kan doen verrijzen.
+Een hoge resist lightning wordt eveneens aanbevolen.
+Nadat je alle graftombes hebt opgeruimd is het tijd voor het gevecht met Duriel.
+Duriel is redelijk makkelijk te verslaan met een goede Barbarian of Paladin.
+Duriel is zeer sterk en doet zeer veel damage maar is gevoelig voor Fire, lightning en Poison Damage (20% Resist).
+Tegen Cold Damage heeft hij 50% Resist, dus dat is minder interessant.
+Eenmaal je Duriel hebt verslagen kan je de achtergelaten items oppikken en de tombe verder verkennen.
+Je zal de indrukwekkende verschijning Tyrael vinden.
+Praat met hem en ga dan terug naar lut Gholein.
+Maak nog een laatste praatje met iedereen en ga naar Meshif.
+Hij zal je aan boord nemen van zijn schip en verder naar het Oosten varen.
+
+ACT 3
+~~~~~
+
+Je komt aan in Kurast en het spelletje kan opnieuw beginnen.
+Ga te werk volgens hetzelfde recept. eerst verken je Kurast en maak je een praatje met alle aanwezige NPC`S.
+Wat zeker de moeite waard is in Act 3 zijn de huurlingen.
+Ga dan ook naar Asheara en huur een Fast Cast, Cold damage huurling, dat zijn de beste.
+Ormus is de persoon naar wie je het meest zal terugkeren omdat hij gratis je gezondheid en mana reservoir laat vollopen.
+Bovendien kan je bij hem ook kopen en verkopen.
+Hralti is de beste smid en in zijn winkel vind je dikwijls goede items.
+Nadat je de boel hebt verkend ga je de jungle in (The Spider Forest).
+Geniet meteen van de kwaliteiten van de huurling.
+Die ellendig snelle Pygmies met hun erwtenblazertjes worden fraai bevroren door de huurling zodat je ze enkel maar moet afmaken.
+In the Spider Forest vind je zeer snel een beeldje (the jade figurine).
+Dit beeldje kan op de grond liggen maar meestal wordt het gedragen door één van de Champion wezens die je in het begin tegenkomt.
+Ga met het beeldje naar Meshif en hij zal je een Golden Bird geven om je te bedanken.
+Ga met de Golden Bird naar Cain.
+Hij vertelt je dat je naar Alkor moet gaan.
+Geef het beeldje dan ook aan Alkor.
+Hij zal met de magische as die zich in het beeldje bevindt iets voor je brouwen.
+Ga even kijken of er geen goed nieuw gerief in de winkels is aangekomen.
+Hirati, de smid zal je beginnen vertellen over de Gidbinn, een magisch wapen.
+Ga hierna terug naar Alkor.
+Hij geeft je een drankje waarmee je permanent +20 to Life verkrijgt.
+Trek opnieuw de jungle in.
+Je zal merken dat de jungle enorm groot is.
+Het is dan ook belangrijk dat je alle teleport punten activeert want anders moet je zeer grote afstanden te voet afleggen.
+Kam verder the Spider Forest uit en ga daarna naar de Arachnid Lair en ruim het boeltje op.
+Daarna ga je naar de Spider Cavern.
+Hier vind je fraaie spinnen die makkelijk met Cold Damage op afstand kunnen worden gehouden.
+In deze Spider Cavern vind je Sszark the Burning, een SU spinnetje dat makkelijk af te maken is.
+In the Spider Cavern vind je in de grote koffer Khalim`s Eye.
+Ga naar Cain en hij zal je de uitleg doen.
+Je moet Khalim`s Eye, Heart, Brain en Flail vinden en deze samensmelten in de Horadric Cube.
+Ga van the Spider Forest naar the Great Marsh en ruim ook hier stelselmatig alle levels op.
+Met een huurling aan je zijde mag dat geen probleem zijn.
+Ga verder naar de Flayer Jungle.
+Hier moet je vooral opletten voor de Pygmy Shaman.
+Deze kan niet alleen andere Pygmies terug tot leven wekken maar heeft ook een furieuze Fire Attack in huis.
+Zorg er dan ook voor dat je op een hoge Resist Fire staat wanneer je met deze kereltjes moet afrekenen.
+Heb je geen hoge Fire Resist, ga dan voorzichtig te werk en wacht tot je Cold Damage huurling de Shaman heeft bevroren.
+Sla hem dan snel zijn hoed van zijn hoofd zodat hij Shaman af is en geen Fire Attack meer kan uitvoeren en maak hem dan verder af.
+Een andere moeilijkheid op dit punt is dat je tegenover grote groepen van Pygmies komt te staan die een ware regen van doperwten in je richting spuwen.
+Heel belangrijk is dat je een schild hanteert met een hoge % Blocking.
+Mijn beste schild in Act 3 was een Bone Shield met 70% Blocking en dit schild was dan ook ideaal om de vele erwten af te weren.
+Ruim rustig the Flayer Jungle op en vergeet niet om ook de Swamp Pit een bezoekje te brengen.
+Ga daarna naar de Flayer Dungeons.
+Stoot door tot level 3 en neem het op tegen Endugu, the Whitch Doctor (SU).
+Dit kereltje heeft 75% Resist tegenover Cold Damage waardoor je hem nog eens op de ouderwetse manier mag bestormen.
+Open daarna de koffer en je zal Khalim`s Brain vinden.
+Trouwens, wist je dat je huurling in ervaring stijgt wanneer je zelf ook stijgt?
+Telkens je één niveau stijgt in ervaring, stijgt je huurling mee.
+Hij of zij zegt dan: "eI feel much stronger now"e.
+Hoeveel sterker hij/zij wordt is nog niet exact gewten, maar volgens de laatste geruchten zouden al zijn/ haar specs met 25% stijgen per level op.
+Hier heb je niet zoveel aan omdat huurlingen nogal snel sterven maar de huurlingen van Act 3 zijn taai en blijven mooi achter je zodat ze langer meegaan.
+Wanneer je met de Pladin speelt, kan je ze trouwens in the field genezen met Prayer.
+Ga nu verder naar Lower Kurast.
+Lower Kurast betreden betekent dat je het moet opnemen tegen de SU Stormtree, een Thorned Hulk.
+De Thorned Hulk is een redelijk zielige verschijning omdat hij zo groot is en zo makkelijk kan worden neergeslagen maar Stormtree is een waardige tegenstander.
+Je kan hem echter wel makkelijk afhouden met Cold Damage.
+Ga Lower Kurast binnen en verken de oppervlakte.
+Activeer het teleport punt en ruim het level stelselmatig op.
+Ga daarna naar de Sewers.
+Opgelet: deze Sewers zijn gigantisch groot want ze lopen tevens onder Upper Kurast.
+Neem dus rustig je tijd om ze op te ruimen want je kan er talrijke goede items vinden alsook enkele krachtige tegenstanders zoals de SU Icehawk Riftwing, een overambitieuze vleermuis die je makkelijk baas moet kunnen.
+In het kleine level 2 van deze Sewers vind je een koffer met daarin Khalim`s Heart.
+Eenmaal je de Sewers hebt opgeruimd kan je Upper Kurast onder handen nemen.
+Wat je in Kurast zeker niet mag vergeten is een bezoekje te brengen aan de zes verlaten tempels.
+Deze kunnen behoorlijk volgepropt zitten met vijanden hetgeen goed is voor de ervaring en je vind er heel wat magische items.
+Bovendien vind je er Lam Essen`s Tome die je kan afgeven aan Alkor.
+Vanaf dan zullen alle winkeliers in Kurast hun prijzen voor je verlagen.
+Nadat je heel Kurast hebt opgeruimd kan je naar Travincal.
+Hier wacht je al een zwaardee brok omdat je hier plots allerlei high level spells zoals Meteor en Thunder Storm op je kop krijgt.
+Voor je Travincal betreed kan je dan ook best nog eens op zoek gaan naar de ultieme configuratie van je items en tracht je op zo`n hoog mogelijke Resist waarden te komen.
+In Travincal moet je immers afrekenen met de High Council en zij hebben onder meer drie SU tegenstanders in hun rangen nl. Ismail Vilehand, Geleb Flamesfinger en Toorc Icefist.
+Wanneer deze drie magiespecialisten tegelijk op je afkomen, kan je het ofwel vergeten ofwel op een lopen zetten.
+Je kan ze dan ook best één per één aanpakken maar dit is niet zo eenvoudig omdat ze zich alle drie nogal dicht tegen de Black Temple bevinden.
+Het beste wat je kan doen is een omtrekkende beweging maken langs links om dan zo al het klein grut reeds naar je toe te lokken.
+Doe hetzelfde over rechts en tracht dan één Council Member per keer naar je toe te lokken.
+Dit lukt niet echt goed, maar je kan de één toch al behoorlijk toetakelen alvorens de ander nabij is.
+Je moet tijdens deze gevechten veel bewegen zodat je de zware magische spells vanuit de lucht kan ontwijken.
+Eenmaal je de High Council hebt verslagen zal je Khalim`s Flail verkrijgen.
+Ga nu naar de grote tempel en je zal de Compelling Orb zien.
+Speel een Town Portal, ga naar Cain en smelt Khalim`s Eye, Brain, Heart en Flail samen.
+Je zal een nieuwe wapen verkrijgen.
+Ga terug naar Travincal en sla de Compelling Orb met dit wapen stuk.
+Nu heb je een doorgang gecreëerd naar the Durance of Hate.
+Naast de lugubere en vooral bloederige sfeer kenmerkt deze locatie zich ook door de aanwezigheid van vier SU tegenstanders nl. drie aanhangers van Mephisto (Wyand Voidbringer, Matter Dragonhand en Bremm Sparkfist) en Mephisto zelf.
+Vorder zeer langzaam doorheen de levels en pik zeker alle items mee.
+Er zijn veel koffers die zijn gesloten, dus zorg ervoor dat je ook wat sleutels mee hebt.
+Pak de SU`s één per één aan.
+Zij vallen nog best mee.
+Eenmaal je ver vordert in level 3 zal je plots Mephisto tegenkomen.
+De beste manier om Mephisto van dichtbij aan te pakken is met wapens met Cold Damage.
+Mephisto heeft immers slechts 25% Resist voor Cold Damage terwijl hij 50% Resist heeft voor Poison en 33% Resist voor Fire en Lightning.
+Vanop afstand (pijlen, magie, bone spear) is het al helemaal een makkie want je kan Mephisto in de inkeping naar het portaal lokken waardoor je hem vanop afstand kan bestoken en makkelijk zijn eigen magische aanvallen kan ontwijken.
+Vergeleken met Duriel is deze Mephisto dan ook een makkelijk levelboss.
+Of misschien zouden we moeten blij zijn dat we het zo makkelijk hebben gehaald deze keer.
+Ga zeker de items die Mephisto achterlaat oppikken want hier zijn twee Rare items bij die zeer goed zijn.
+Ga naar het dorp, herbron, koop, verkoop en sla nog een laatste praatje en ga daarna terug naar level 3 van the Durance of Hate waarna je door het portaal kan stappen naar richting Act 4.
+
+ACT 4
+~~~~~
+
+Je komt terecht in het Pandemonium Fortress.
+Hier hetzelfde verhaal uiteraard.
+Verken je omgeving en praat met de aanwezige NPC`s.
+Cain is weer meegereisd en dat op zijn oude dag!
+Onderaan de trap vind je Jamella en Halbu.
+Jamella laat gratis je mana- en gezondheidsreservoir vollopen en koopt en verkoopt wapens, potions en scrolls.
+Je kan bij Jamella ook een Gamble spelen en ik heb al heel veel verhalen gehoord over hoe spelers het ene Set item of Rare item na het andere verkregen maar bij mij was het altijd brol dus ik kan het je niet aanbevelen om geld te stoppen in een Gamble.
+Bij Halbo kan je je wapens laten repareren en dat komt van pas want vanaf nu zal je moeten hakken dat de stukken eraf vliegen hetgeen zeer sletig is voor het materiaal.
+Nadat je je perfect hebt uitgerust ga je naar de aartsengel Tyrael.
+Hij vertelt je over de Fallen Angel Izual, de gevangen genomen rechterhand van Tyrael die uit zijn lijden moet worden verlost.
+Dit is je eerste quest.
+Erop af.
+Ga langs de lange trap naar beneden en je zal in de Outer Steppes terecht komen.
+Hier kan je meteen genieten van de lugubere aswereld en de vele verloren zielen die in het decor gevangen zitten.
+Je kan ze dan ook best uit hun lijden verlossen.
+Verken voorzichtig deze Outer Steppes.
+Vanaf nu geldt immers de regel dat je niet te snel vooruit mag stormen want ander trigger je veel te veel vijanden ineens.
+Dus langzaam evolueren.
+Je zal merken dat de wereld in Act 4 niet zo uitgestrekt is als in Act 3 maar het duurt wel heel lang eer je de eerste teleport punt vind, dus vergeet zeker niet om voldoende Town Portal scrolls mee te nemen.
+Ga van de Outer Steppes naar de Plains of Despair en ruim langzaam het level op.
+Op een gegeven moment zal je Izual vinden die bezeten is van het kwade.
+Sla hem neer en de ziel van Izual zal verschijnen.
+Ga nu terug naar het Pandemonium Fortress en praat met Tyrael.
+Je zal als beloning 2 skillpoints krijgen.
+Het juist besteden van deze punten kan cruciaal zijn voor het eindgevecht met Diablo.
+Ga terug naar de Plains of Despair en ga van hieruit naar de City of the Damned.
+Hier wachten je nog tal van vijanden maar niets waar je je echt zorgen moet over maken.
+Hier vind je ook een gat in de grond dat naar de River of Flames leidt.
+Activeer eerst het teleport punt rechts van het gat en ga naar het Pandemonium Fortress.
+Versterk je goed en configureer je items zo dat je een zo hoog mogelijk incasseringsvermogen hebt.
+Daal hierna af in de River of Flames.
+Hier moet je op zoek naar de Hellforge maar je moet wel eerst voorbij een hele schare Hellforge fans (niet zo`n probleem) en een zeer taaie rakker genaamd Hephasto the Armorer.
+Deze SU tegenstander is Magic Resistant en is zo sterk dat hij op eender welke manier een taaie tegenstander blijft.
+Ik hen hem het makkelijkste kunnen vellen vanop afstand met een Necromancer (Bone Spear level 7) terwijl hij mijn Iron Golem klop aan het geven was.
+De Paladin en de Barbarian moeten met dit kereltje zeker uitkijken want elke vuistslag van Hephasto kan 36 damage opleveren.
+Op die manier zit je zeer snel aan de 0.
+Ruim de River of Flames verder op en je zal de Hellforge en de Hellforge Hammer vinden.
+Sla nu de Soulstone van Mephisto stuk met de Hellforge Hammer.
+Raap zeker alle items en edelstenen op die verschijnen en ga naar Cain voor een praatje.
+Ga daarna terug naar de River of Flames en ga naar het Chaos Sanctuary.
+Ga Hadriel voorbij en vorder zeer langzaam langs de stenen paden totdat je een kathedraal tegenkomt.
+Ga binnen en hack&slash je een weg naar het middelpunt.
+Merk op dat de architectuur van de kathedraal in kruisvorm is met het altaar van Diablo in het midden.
+De drie uitlopers van het kruis zijn voorzien van een zegel dat moet geactiveerd worden.
+Opgelet: telkens je een zegel activeert, trigger je een SU superkiller en zijn gevolg.
+De tegenstand is zeer zwaar dus cast steeds een Town Portal naast het zegel voor het geval je in nood komt,
+Deze drie SU tegenstanders(Grand Vizier of Chaos, Lord De Seis en Infector of Souls) zijn niet te onderschatten en een goede test om te zien of je klaar bent om Diablo aan te pakken.
+Vooal Lord de Seis is een moeilijke tegenstander omdat hij Thief abilities heeft waardoor hij potions uit je belt kan halen.
+En niets is zo vervelend als een Lord De Seis die alsmaar je Full Rejuvenation Potions uit je belt pikt en op de grond gooit.
+Doch al bij al moeten deze tegenstanders nog meevallen.
+Zie je het niet meer zitten, denk dan even aan die momenten wanneer je het zo moelijk had met Duriel.
+Het moeilijkste moet immers nog komen nl. het gevecht met Diablo.
+Zorg er zeker voor dat je op Resist Fire Max en Resist Lightning Max staat.
+Op die manier kan je de Fire Nova en de Red Lightning Hose nog redelijk goed overleven.
+Dan komt het er gewoon op aan om rondjes te lopen en telkens na casten van een spreuk even toe te slaan.
+Rondjes draaien, dichter komen, toeslaan, verder gaan rondjes draaien, enz.
+Raakt Diablo je toch, dan kan je altijd een Town Portal spelen.
+Let wel, Diablo kan een Bone Prison rond deze Town Portal spelen zodat je niet weg kan.
+Hou dan ook altijd een extra Town Portal achter de hand.
+Nadat je Diablo hebt verslagen kan je de items die hij achterlaat, oppikken.
+Een teller zal verschijnen en binnen die tijd moet je de items identificeren en oordelen wat je wilt meenemen en wat niet.
+Nadat het spel is beëindigd, krijg je de optie om opnieuw te beginnen in Normal of Nightmare.
+Aan jou om te beslissen of je verder doet met je bestaande personage of dat je opnieuw begint in Normal met een ander personage.
+
+Veel Succes.
+
+Einde.
