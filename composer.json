@@ -1,0 +1,21 @@
+{
+  "name": "Markkaz/Spelcodes",
+  "description": "My old spelcodes.nl website",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Mark Kazemier",
+      "email": "mark.kazemier@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "phpunit/dbunit": "~1.3",
+    "behat/behat": "~3.0",
+    "behat/mink": "~1.6",
+    "behat/mink-extension": "~2.0",
+    "behat/mink-goutte-driver": "~1.1",
+    "behat/mink-selenium2-driver": "~1.2"
+  }
+}
