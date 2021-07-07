@@ -17,21 +17,48 @@ $cUser = new User();
 /* Verbinden met mysql */
 connectDB();
 
-/* Permissies controleren */
-if ((isset($_GET['topicid'])) && (isset($_POST['reactie'])) && (isset($_GET['id']))) {
+try {
+    if(!isset($_GET['id'])) {
+        throw new Exception('Game id parameter missing');
+    }
+
+    if(!isset($_GET['topicid'])) {
+        throw new Exception('Topic id parameter missing');
+    }
+
+    if($_SERVER['REQUEST_METHOD'] != 'POST' || !isset($_POST['reactie'])) {
+        throw new Exception('Form isn\'t posted');
+    }
+
+    $sql = 'SELECT EXISTS(
+                SELECT * FROM topics t 
+                    JOIN spellenhulp sh ON sh.topicid = t.topicid 
+                    WHERE t.topicid = '.add($_GET['topicid']).' 
+                        AND sh.spelid = '.add($_GET['id']).'
+            ) as topic_exists';
+    $result = mysql_query($sql);
+    if(!$result) {
+        throw new Exception('Error finding the topic from the database');
+    }
+
+    $data = mysql_fetch_assoc($result);
+    if(!$data || !$data['topic_exists']) {
+        throw new Exception('Topic doesn\'t exist');
+    }
+
     if (($cUser->checkSession()) || ($cUser->checkCookie())) {
-        $sQuery = "INSERT INTO berichten (berichtid, topicid, userid, bericht, datum, tijd)
-               VALUES ('', '" . add($_GET['topicid']) . "', '" . $cUser->m_iUserid . "',
-               '" . add($_POST['reactie']) . "', NOW(), NOW());";
+        $sQuery = "INSERT INTO berichten (topicid, userid, bericht, datum, tijd)
+           VALUES ('" . add($_GET['topicid']) . "', '" . $cUser->m_iUserid . "',
+           '" . add($_POST['reactie']) . "', NOW(), NOW());";
         if (mysql_query($sQuery)) {
             $cUser->addPost();
             header('Location: gameview.php?id=' . $_GET['id'] . '&topicid=' . $_GET['topicid']);
         } else {
-            print 'Er is iets niet in orde met de database';
+            throw new Exception('Error adding game comment');
         }
     } else {
         header('Location: loginForm.php');
     }
-} else {
+} catch (Exception $e) {
     header('HTTP/1.0 404 Page not Found');
 }
