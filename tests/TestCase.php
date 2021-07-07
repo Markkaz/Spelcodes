@@ -4,6 +4,7 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use Tests\Factories\UserFactory;
 use Tests\Pages\IndexTest;
 
 class TestCase extends BaseTestCase
@@ -81,14 +82,34 @@ class TestCase extends BaseTestCase
         self::$pdo->query('SET FOREIGN_KEY_CHECKS=1');
     }
 
-    protected function visitPage($pagePath)
+    protected function visitPage($pagePath, array $get = [])
     {
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+        $_GET = $get;
 
         ob_start();
         include $pagePath;
         $page = ob_get_contents();
         ob_end_clean();
         return $page;
+    }
+
+    public function login($permissions = 0)
+    {
+        $userId = UserFactory::create(
+            self::$pdo,
+            'Mark',
+            'secret',
+            'example@example.com',
+            '127.0.0.1',
+            $permissions
+        );
+
+        $_COOKIE['USERDATA'] = serialize([
+           'userid' => $userId,
+           'ip' => '127.0.0.1'
+        ]);
+
+        return $userId;
     }
 }

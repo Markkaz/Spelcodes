@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "Webdevils\\Spelcods\\": "src/"
+      "Webdevils\\Spelcodes\\": "src/"
     }
   },
   "autoload-dev": {
