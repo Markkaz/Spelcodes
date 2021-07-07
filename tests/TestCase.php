@@ -44,6 +44,11 @@ class TestCase extends BaseTestCase
         $this->emptyTables();
     }
 
+    protected function tearDown()
+    {
+        session_abort();
+    }
+
     protected static function createDatabaseConnection()
     {
         self::$pdo = new \PDO('mysql:host=localhost;dbname=spelcodes', 'homestead', 'secret');
