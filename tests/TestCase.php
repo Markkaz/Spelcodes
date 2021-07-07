@@ -5,7 +5,6 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Tests\Factories\UserFactory;
-use Tests\Pages\IndexTest;
 
 class TestCase extends BaseTestCase
 {
@@ -45,11 +44,6 @@ class TestCase extends BaseTestCase
         $this->emptyTables();
     }
 
-    protected function tearDown()
-    {
-        session_abort();
-    }
-
     protected static function createDatabaseConnection()
     {
         self::$pdo = new \PDO('mysql:host=localhost;dbname=spelcodes', 'homestead', 'secret');
@@ -87,10 +81,12 @@ class TestCase extends BaseTestCase
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         $_GET = $get;
 
+        session_abort();
         ob_start();
         include $pagePath;
         $page = ob_get_contents();
         ob_end_clean();
+        session_abort();
         return $page;
     }
 
