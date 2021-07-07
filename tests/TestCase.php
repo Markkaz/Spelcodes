@@ -84,7 +84,7 @@ class TestCase extends BaseTestCase
 
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
         if(!empty($_POST)) {
-            $_SERVER['REQUEST_METHOD'] = 'post';
+            $_SERVER['REQUEST_METHOD'] = 'POST';
         }
 
         session_abort();

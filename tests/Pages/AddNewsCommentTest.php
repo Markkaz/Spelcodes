@@ -115,4 +115,19 @@ class AddNewsCommentTest extends TestCase
             'bericht' => 'A nice comment!'
         ]);
     }
+
+    /** @test */
+    public function it_increases_the_comments_counter_for_the_user()
+    {
+        $page = $this->visitPage(
+            __DIR__ . '/../../addNieuws.php',
+            ['id' => $this->newsId],
+            ['reactie' => 'A nice comment!']
+        );
+
+        $this->assertDatabaseHas('users', [
+            'username' => 'Mark',
+            'posts' => 1
+        ]);
+    }
 }
