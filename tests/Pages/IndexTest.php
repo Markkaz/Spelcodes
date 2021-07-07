@@ -2,19 +2,14 @@
 
 namespace Tests\Pages;
 
+use Tests\Factories\ConsoleFactory;
+use Tests\Factories\GameFactory;
 use Tests\Factories\NewsFactory;
 use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class IndexTest extends TestCase
 {
-    protected function tearDown()
-    {
-        parent::tearDown();
-
-        session_abort();
-    }
-
     /** @test */
     public function it_shows_top_5_last_news_items()
     {
@@ -65,10 +60,11 @@ class IndexTest extends TestCase
     /** @test */
     public function it_shows_three_highlighted_games()
     {
-        $consoleId = $this->createConsole('Xbox');
+        $consoleId = ConsoleFactory::create(self::$pdo, 'Xbox');
 
         foreach(range(1, 3) as $i) {
-            $gameId = $this->createGame(
+            $gameId = GameFactory::create(
+                self::$pdo,
                 $consoleId,
                 'Halo ' . $i,
                 'halo',
@@ -78,7 +74,7 @@ class IndexTest extends TestCase
                 'https://microsoft.com'
             );
 
-            $this->highlightGame($consoleId, $gameId);
+            GameFactory::highlight(self::$pdo, $consoleId, $gameId);
         }
 
         // Visit page
@@ -96,35 +92,6 @@ class IndexTest extends TestCase
     protected function createUser($name, $password, $email, $ip)
     {
         return UserFactory::create(self::$pdo, $name, $password, $email, $ip);
-    }
-
-    protected function createConsole($name)
-    {
-        $sql = 'INSERT INTO consoles (naam) VALUES (?)';
-        $query = self::$pdo->prepare($sql);
-        $query->execute([$name]);
-
-        return self::$pdo->lastInsertId();
-    }
-
-    protected function createGame($consoleId, $name, $directory, $developer, $publisher, $developerUrl, $publisherUrl)
-    {
-        $sql = 'INSERT INTO spellen 
-                    (consoleid, naam, map, developer, publisher, developerurl, publisherurl, rating, stemmen) 
-                VALUES 
-                    (?, ?, ?, ?, ?, ?, ?, 0, 0)';
-        $query = self::$pdo->prepare($sql);
-        $query->execute([
-            $consoleId,
-            $name,
-            $directory,
-            $developer,
-            $publisher,
-            $developerUrl,
-            $publisherUrl
-        ]);
-
-        return self::$pdo->lastInsertId();
     }
 
     protected function highlightGame($consoleId, $gameId)
