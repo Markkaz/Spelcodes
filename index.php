@@ -24,6 +24,7 @@ include('Includes/login.php');
 $cTPL->setPlace('TITEL', 'Home');
 
 $cTPL->setFile('CONTENT', 'Templates/index.tpl');
+$cTPL->parse();
 
 $iTeller = 1;
 $sQuery = "SELECT s.spelid, s.naam, c.naam AS console, s.map FROM spellen s, spellenview sv, consoles c

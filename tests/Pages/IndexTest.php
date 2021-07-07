@@ -32,8 +32,8 @@ class IndexTest extends TestCase
             __DIR__ . '/../../index.php'
         );
 
-        // Check if we see the latest 5 news items
         $this->assertContains('News item', $page);
+        $this->assertNotContains('Invisible news item', $page);
     }
 
     /** @test */
