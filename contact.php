@@ -21,9 +21,13 @@ $cTPL = new Template('Templates/main.tpl');
 include('Includes/login.php');
 
 /* Controleren of het formulier is verzonden */
-if (isset($_POST['titel'])) {
-    $sQuery = "INSERT INTO mail (mailid, titel, bericht, email, gelezen)
-             VALUES ('', '" . add($_POST['titel']) . "', '" . add($_POST['bericht']) . "',
+if ($_SERVER['REQUEST_METHOD'] == 'POST' &&
+    isset($_POST['titel']) &&
+    isset($_POST['email']) &&
+    isset($_POST['bericht'])
+) {
+    $sQuery = "INSERT INTO mail (titel, bericht, email, gelezen)
+             VALUES ('" . add($_POST['titel']) . "', '" . add($_POST['bericht']) . "',
              '" . add($_POST['email']) . "', 0);";
     if (mysql_query($sQuery)) {
         $cTPL->setPlace('TITEL', 'Email verzonden');
