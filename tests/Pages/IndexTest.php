@@ -2,6 +2,8 @@
 
 namespace Tests\Pages;
 
+use Tests\Factories\NewsFactory;
+use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class IndexTest extends TestCase
@@ -16,16 +18,17 @@ class IndexTest extends TestCase
     /** @test */
     public function it_shows_top_5_last_news_items()
     {
-        $userId = $this->createUser(
+        $userId = UserFactory::create(
+            self::$pdo,
             'Mark',
             'newpassword',
             'example@example.com',
             '127.0.0.1'
         );
 
-        $this->createNewsItem($userId, 'Invisible news item', 'This news item is invisible');
+        NewsFactory::create(self::$pdo, $userId, 'Invisible news item', 'This news item is invisible');
         foreach (range(1, 5) as $i) {
-            $this->createNewsItem($userId, 'News item '.$i, 'Body of news item '.$i);
+            NewsFactory::create(self::$pdo, $userId, 'News item '.$i, 'Body of news item '.$i);
         }
 
         $page = $this->visitPage(
@@ -39,15 +42,15 @@ class IndexTest extends TestCase
     /** @test */
     public function it_shows_amount_of_comments_with_a_news_item()
     {
-        $userId = $this->createUser(
+        $userId = UserFactory::create(
+            self::$pdo,
             'Mark',
-            'newpassword',
+            'newspassword',
             'example@example.com',
             '127.0.0.1'
         );
 
-        $newsId = $this->createNewsItem($userId, 'A news item', 'And some content on the news item');
-
+        $newsId = NewsFactory::create(self::$pdo, $userId, 'A news item', 'And some content on the news item');
         foreach (range(1, 5) as $item) {
             $this->createNewsComment($newsId, $userId, 'A reply');
         }
@@ -92,35 +95,7 @@ class IndexTest extends TestCase
 
     protected function createUser($name, $password, $email, $ip)
     {
-        $sql = 'INSERT INTO users 
-                    (username, password, email, ip, activate, permis, posts, datum) 
-                VALUES 
-                   (?, SHA2(?, 0), ?, ?, 1, 0, 0, NOW())';
-        $query = self::$pdo->prepare($sql);
-        $query->execute([
-            $name,
-            $password,
-            $email,
-            $ip
-        ]);
-
-        return self::$pdo->lastInsertId();
-    }
-
-    protected function createNewsItem($userId, $title, $body)
-    {
-        $sql = 'INSERT INTO nieuws 
-                    (userid, titel, bericht, datum, tijd) 
-                VALUES 
-                    (?, ?, ?, NOW(), NOW());';
-        $query = self::$pdo->prepare($sql);
-        $query->execute([
-            $userId,
-            $title,
-            $body
-        ]);
-
-        return self::$pdo->lastInsertId();
+        return UserFactory::create(self::$pdo, $name, $password, $email, $ip);
     }
 
     protected function createConsole($name)
