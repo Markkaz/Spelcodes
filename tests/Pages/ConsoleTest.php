@@ -13,10 +13,9 @@ class ConsoleTest extends TestCase
     {
         $consoleId = ConsoleFactory::create(self::$pdo, 'Xbox');
 
-        $_GET['id'] = $consoleId;
-
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            ['id' => $consoleId]
         );
 
         $this->assertContains('Xbox', $page);
@@ -25,10 +24,9 @@ class ConsoleTest extends TestCase
     /** @test */
     public function it_gives_404_if_console_doesnt_exist()
     {
-        $_GET['id'] = 999;
-
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            ['id' => 999]
         );
 
         $this->assertEquals('', $page);
@@ -76,9 +74,9 @@ class ConsoleTest extends TestCase
         );
         GameFactory::highlight(self::$pdo, $otherConsoleId, $gameId);
 
-        $_GET['id'] = $currentConsoleId;
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            ['id' => $currentConsoleId]
         );
 
         $this->assertContains('Visible game 1', $page);
@@ -121,9 +119,9 @@ class ConsoleTest extends TestCase
             );
         }
 
-        $_GET['id'] = $consoleId;
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            ['id' => $consoleId]
         );
 
         $this->assertContains('New game 1', $page);
@@ -157,12 +155,12 @@ class ConsoleTest extends TestCase
             'https://publisher.com'
         );
 
-        $_GET = [
-            'id' => $consoleId,
-            'letter' => 'A'
-        ];
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            [
+                'id' => $consoleId,
+                'letter' => 'A'
+            ]
         );
 
         $this->assertContains('A - starts with A', $page);
@@ -195,12 +193,12 @@ class ConsoleTest extends TestCase
             'https://publisher.com'
         );
 
-        $_GET = [
-            'id' => $consoleId,
-            'letter' => '#'
-        ];
         $page = $this->visitPage(
-            __DIR__ . '/../../consoles.php'
+            __DIR__ . '/../../consoles.php',
+            [
+                'id' => $consoleId,
+                'letter' => '#'
+            ]
         );
 
         $this->assertContains('7 - starts with 7', $page);
