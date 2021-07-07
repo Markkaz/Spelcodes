@@ -83,7 +83,9 @@ class TestCase extends BaseTestCase
         $_POST = $post;
 
         $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
-        if(!empty($_POST)) {
+        if(empty($_POST)) {
+            $_SERVER['REQUEST_METHOD'] = 'GET';
+        } else {
             $_SERVER['REQUEST_METHOD'] = 'POST';
         }
 
