@@ -29,37 +29,43 @@ if (($cUser->checkSession()) || ($cUser->checkCookie())) {
     $cTPL->setBlock('LOGIN', 'login');
 }
 
-if (isset($_POST['username'])) {
+if (isset($_POST['username']) && isset($_POST['password1']) && isset($_POST['password2'])) {
     if ($_POST['password1'] == $_POST['password2']) {
-        $sQuery = "SELECT userid FROM users WHERE username='" . add($_POST['username']) . "';";
-        if ($cResult = mysql_query($sQuery)) {
-            if (mysql_num_rows($cResult) <= 0) {
-                $sQuery = "INSERT INTO users(username, password, email, ip, activate, permis, posts, datum)
-                   VALUES ('', '" . add($_POST['username']) . "',
-                  PASSWORD('" . add($_POST['password1']) . "'),
-                           '" . add($_POST['email']) . "',
-                           '', '0', '0', '0', NOW());";
-                if (mysql_query($sQuery)) {
-                    $cTPL->setPlace('TITEL', 'Succesvol geregistreerd');
-                    $cTPL->setPlace('CONTENT', 'Je bent met succes geregistreerd als <b>' . $_POST['username'] . '</b>. Er is een email verzonden naar <b>' . $_POST['email']);
-                    $cTPL->show();
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $sQuery = "SELECT userid FROM users WHERE username='" . add($_POST['username']) . "';";
+            if ($cResult = mysql_query($sQuery)) {
+                if (mysql_num_rows($cResult) <= 0) {
+                    $sQuery = "INSERT INTO users(username, password, email, ip, activate, permis, posts, datum)
+                       VALUES ('" . add($_POST['username']) . "',
+                      SHA2('" . add($_POST['password1']) . "', 0),
+                               '" . add($_POST['email']) . "',
+                               '', '0', '0', '0', NOW());";
+                    if (mysql_query($sQuery)) {
+                        $cTPL->setPlace('TITEL', 'Succesvol geregistreerd');
+                        $cTPL->setPlace('CONTENT', 'Je bent met succes geregistreerd als <b>' . $_POST['username'] . '</b>. Er is een email verzonden naar <b>' . $_POST['email']);
+                        $cTPL->show();
 
-                    $sBericht = "Beste, " . $_POST['username'] . ",\nJij of iemand anders heeft zich onder dit email adres aangemeld bij Spelcodes.\nJe login gegevens zijn:\nGebruikersnaam: " . $_POST['username'] . "\nWachtwoord: " . $_POST['password1'] . "\n\nKlik om je aanmelding compleet te maken op de volgende link:\n http://www.spelcodes.nl/reg.php?id=" . base64_encode(mysql_insert_id()) . "\n\nMet Vriendelijke Groeten,\n Spelcodes";
+                        $sBericht = "Beste, " . $_POST['username'] . ",\nJij of iemand anders heeft zich onder dit email adres aangemeld bij Spelcodes.\nJe login gegevens zijn:\nGebruikersnaam: " . $_POST['username'] . "\nWachtwoord: " . $_POST['password1'] . "\n\nKlik om je aanmelding compleet te maken op de volgende link:\n http://www.spelcodes.nl/reg.php?id=" . base64_encode(mysql_insert_id()) . "\n\nMet Vriendelijke Groeten,\n Spelcodes";
 
-                    mail(trim($_POST['email']), 'Registratie bij Spelcodes', $sBericht);
+                        mail(trim($_POST['email']), 'Registratie bij Spelcodes', $sBericht);
+                    } else {
+                        $cTPL->setPlace('TITEL', 'Fout bij het registreren');
+                        $cTPL->setPlace('CONTENT', mysql_error());
+                        $cTPL->show();
+                    }
                 } else {
-                    $cTPL->setPlace('TITEL', 'Fout bij het registreren');
-                    $cTPL->setPlace('CONTENT', 'Sorry, maar er ging iets fout bij het registreren. Probeer het later opnieuw');
+                    $cTPL->setPlace('TITEL', 'De gebruikersnaam bestaat al');
+                    $cTPL->setPlace('CONTENT', 'De gebruikersnaam waaronder je wil registreren is al in gebruik.');
                     $cTPL->show();
                 }
             } else {
-                $cTPL->setPlace('TITEL', 'De gebruikersnaam bestaat al');
-                $cTPL->setPlace('CONTENT', 'De gebruikersnaam waaronder je wil registreren is al in gebruik.');
+                $cTPL->setPlace('TITEL', 'Fout bij het registreren');
+                $cTPL->setPlace('CONTENT', 'Sorry, maar er ging iets fout bij het registreren. Probeer het later opnieuw');
                 $cTPL->show();
             }
         } else {
             $cTPL->setPlace('TITEL', 'Fout bij het registreren');
-            $cTPL->setPlace('CONTENT', 'Sorry, maar er ging iets fout bij het registreren. Probeer het later opnieuw');
+            $cTPL->setPlace('CONTENT', 'Het e-mail adres is ongeldig');
             $cTPL->show();
         }
     } else {
