@@ -122,7 +122,7 @@ class ShowNewsTest extends TestCase
     /** @test */
     public function it_shows_edit_comment_button_for_user_with_permissions()
     {
-        $this->login(Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::MANAGE_COMMENTS);
 
         $commentId = NewsCommentFactory::create(
             self::$pdo,
