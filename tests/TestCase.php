@@ -27,6 +27,7 @@ class TestCase extends BaseTestCase
         'forum_topics',
         'forum_posts',
     ];
+    protected $session = [];
 
     public static function setUpBeforeClass()
     {
@@ -94,6 +95,9 @@ class TestCase extends BaseTestCase
         include $pagePath;
         $page = ob_get_contents();
         ob_end_clean();
+        if(isset($_SESSION)) {
+            $this->session = $_SESSION;
+        }
         session_abort();
         return $page;
     }
@@ -120,6 +124,16 @@ class TestCase extends BaseTestCase
     public function logout()
     {
         unset($_COOKIE['USERDATA']);
+    }
+
+    public function assertSessionHas($key)
+    {
+        $this->assertArrayHasKey($key, $this->session);
+    }
+
+    public function getSession($key)
+    {
+        return $this->session[$key];
     }
 
     public function assertDatabaseHas($table, array $fields)

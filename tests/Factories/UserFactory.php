@@ -32,4 +32,11 @@ class UserFactory
         $query = $pdo->prepare($sql);
         $query->execute([$userId]);
     }
+
+    public static function deactivate(\PDO $pdo, $userId)
+    {
+        $sql = "UPDATE users SET activate=false WHERE userid=?;";
+        $query = $pdo->prepare($sql);
+        $query->execute([$userId]);
+    }
 }
