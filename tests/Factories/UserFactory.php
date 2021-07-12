@@ -25,4 +25,11 @@ class UserFactory
 
         return $pdo->lastInsertId();
     }
+
+    public static function activate(\PDO $pdo, $userId)
+    {
+        $sql = "UPDATE users SET activate=true WHERE userid=?";
+        $query = $pdo->prepare($sql);
+        $query->execute([$userId]);
+    }
 }
