@@ -45,7 +45,7 @@ class AccountActivationTest extends TestCase
             ['id' => base64_encode(999)]
         );
 
-        $this->assertContains('Activering mislukt', $page);
+        $this->assertEquals('', $page);
     }
 
     /** @test */

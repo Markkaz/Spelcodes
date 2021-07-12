@@ -13,7 +13,7 @@ class UserFactory
         $sql = 'INSERT INTO users 
                     (username, password, email, ip, activate, permis, posts, datum) 
                 VALUES 
-                   (?, SHA2(?, 0), ?, ?, 1, ?, 0, NOW())';
+                   (?, SHA2(?, 0), ?, ?, 0, ?, 0, NOW())';
         $query = $pdo->prepare($sql);
         $query->execute([
             $name,
