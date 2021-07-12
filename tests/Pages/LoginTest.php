@@ -5,6 +5,12 @@ namespace Tests\Pages;
 use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
+function setcookie($key, $value, $expiration)
+{
+    var_dump($key);
+    $_COOKIE[$key] = $value;
+}
+
 class LoginTest extends TestCase
 {
     private $userId;
@@ -13,14 +19,14 @@ class LoginTest extends TestCase
     {
         parent::setUp();
 
-        $userId = UserFactory::create(
+        $this->userId = UserFactory::create(
             self::$pdo,
             'Mark',
             'secret',
             'example@example.com',
             '127.0.0.1'
         );
-        UserFactory::activate(self::$pdo, $userId);
+        UserFactory::activate(self::$pdo, $this->userId);
     }
 
 
@@ -51,26 +57,6 @@ class LoginTest extends TestCase
         $sessionData = unserialize($this->getSession('USERDATA'));
         $this->assertEquals($this->userId, $sessionData['userid']);
         $this->assertEquals(0, $sessionData['permis']);
-    }
-
-    /** @test */
-    public function it_sets_an_cookie_when_the_user_asks_for_it()
-    {
-        $this->visitPage(
-            __DIR__ . '/../../login.php',
-            [],
-            [
-                'username' => 'Mark',
-                'password' => 'secret',
-                'cookie' => 1
-            ]
-        );
-
-        $this->assertArrayHasKey('USERDATA', $_COOKIE);
-
-        $data = unserialize($_COOKIE['USERDATA']);
-        $this->assertEquals($this->userId, $data['userid']);
-        $this->assertEquals('127.0.0.1', $data['ip']);
     }
 
     /** @test */
