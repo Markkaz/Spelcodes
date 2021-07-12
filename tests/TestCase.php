@@ -102,16 +102,18 @@ class TestCase extends BaseTestCase
         return $page;
     }
 
-    public function login($permissions = 0)
+    public function login($userId = null, $permissions = 0)
     {
-        $userId = UserFactory::create(
-            self::$pdo,
-            'Mark',
-            'secret',
-            'example@example.com',
-            '127.0.0.1',
-            $permissions
-        );
+        if($userId == null) {
+            $userId = UserFactory::create(
+                self::$pdo,
+                'Mark',
+                'secret',
+                'example@example.com',
+                '127.0.0.1',
+                $permissions
+            );
+        }
 
         $_COOKIE['USERDATA'] = serialize([
            'userid' => $userId,
