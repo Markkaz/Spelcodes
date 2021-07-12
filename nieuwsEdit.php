@@ -19,7 +19,7 @@ $cTPL = new Template('Templates/main.tpl');
 connectDB();
 
 /* Permissie controleren */
-if (($cUser->checkSession()) || ($cUser->checkCookie())) {
+if (($cUser->checkSession() || $cUser->checkCookie()) && isset($_GET['id'])) {
     $sQuery = "SELECT userid FROM nieuwsreacties WHERE reactieid='" . add($_GET['id']) . "';";
     if ($cResult = mysql_query($sQuery)) {
         $aData = mysql_fetch_assoc($cResult);
