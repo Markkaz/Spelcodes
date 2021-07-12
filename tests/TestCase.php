@@ -131,6 +131,11 @@ class TestCase extends BaseTestCase
         $this->assertArrayHasKey($key, $this->session);
     }
 
+    public function assertSessionHasNot($key)
+    {
+        $this->assertArrayNotHasKey($key, $this->session);
+    }
+
     public function getSession($key)
     {
         return $this->session[$key];
