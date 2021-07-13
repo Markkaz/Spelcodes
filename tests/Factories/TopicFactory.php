@@ -32,7 +32,7 @@ class TopicFactory
     public static function detach(\PDO $pdo, $topicId, $gameId)
     {
         $sql = 'DELETE FROM spellenhulp WHERE topicid = ? AND spelid = ?;';
-        $query = $pdo->query($sql);
+        $query = $pdo->prepare($sql);
         $query->execute([
             $topicId, $gameId
         ]);
