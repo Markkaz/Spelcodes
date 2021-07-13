@@ -31,8 +31,8 @@ try {
         header('Http/1.0 404 Not Found');
     } else {
         /* Controleren of het formulier is verzonden */
-        if (isset($_POST['username'])) {
-            $sQuery = "SELECT userid FROM users WHERE username='" . add($_POST['username']) . "' AND password=PASSWORD('" . add($_POST['wachtwoord']) . "');";
+        if (isset($_POST['username']) && isset($_POST['wachtwoord'])) {
+            $sQuery = "SELECT userid FROM users WHERE username='" . add($_POST['username']) . "' AND password=SHA2('" . add($_POST['wachtwoord']) . "', 0);";
             if ($cResult = mysql_query($sQuery)) {
                 if (mysql_num_rows($cResult) <= 0) {
                     header('Location: profiel.php?error=Je wachtwoord en/of gebruikersnaam klopt niet');
@@ -45,13 +45,13 @@ try {
                 }
 
                 /* Alle controles zijn uitgevoerd, nu kijken of de persoon wachtwoord wil veranderen */
-                if (!empty($_POST['wachtwoord_nieuw1'])) {
+                if (!empty($_POST['wachtwoord_nieuw1']) && !empty($_POST['wachtwoord_nieuw2'])) {
                     if ($_POST['wachtwoord_nieuw1'] != $_POST['wachtwoord_nieuw2']) {
                         header('Location: profiel.php?error=De twee nieuwe wachtwoorden komen niet overeen');
                         throw new ExitException();
                     }
                     /* Het nieuwe wachtwoord opslaan */
-                    $sQuery = "UPDATE users SET password=PASSWORD('" . add($_POST['wachtwoord_nieuw1']) . "') WHERE userid='" . add($cUser->m_iUserid) . "';";
+                    $sQuery = "UPDATE users SET password=SHA2('" . add($_POST['wachtwoord_nieuw1']) . "', 0) WHERE userid='" . add($cUser->m_iUserid) . "';";
                     if (!mysql_query($sQuery)) {
                         header('Location: profiel.php?error=Er is een probleem met de database');
                         throw new ExitException();
