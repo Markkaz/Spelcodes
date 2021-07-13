@@ -26,6 +26,7 @@ class TestCase extends BaseTestCase
         'forum_forums',
         'forum_topics',
         'forum_posts',
+        'zoekwoorden'
     ];
     protected $session = [];
 
