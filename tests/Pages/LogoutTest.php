@@ -6,6 +6,11 @@ use Tests\TestCase;
 
 class LogoutTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [];
+    }
+
     /** @test */
     public function it_can_logout_the_user()
     {

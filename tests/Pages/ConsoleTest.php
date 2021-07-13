@@ -8,6 +8,15 @@ use Tests\TestCase;
 
 class ConsoleTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'consoles',
+            'spellen',
+            'spellenview',
+        ];
+    }
+
     /** @test */
     public function it_shows_the_console_name_at_the_top()
     {

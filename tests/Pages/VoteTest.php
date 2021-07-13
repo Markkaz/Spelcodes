@@ -11,6 +11,15 @@ class VoteTest extends TestCase
     private $consoleId;
     private $gameId;
 
+    public static function getTables()
+    {
+        return [
+            'consoles',
+            'spellen',
+            'stemmen',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

@@ -14,6 +14,15 @@ class DeleteNewsCommentTest extends TestCase
     private $newsId;
     private $commentId;
 
+    public static function getTables()
+    {
+        return [
+            'users',
+            'nieuws',
+            'nieuwsreacties',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

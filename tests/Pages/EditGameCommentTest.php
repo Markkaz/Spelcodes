@@ -18,6 +18,18 @@ class EditGameCommentTest extends TestCase
     private $topicId;
     private $commentId;
 
+    public static function getTables()
+    {
+        return [
+            'users',
+            'consoles',
+            'spellen',
+            'topics',
+            'spellenhulp',
+            'berichten',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

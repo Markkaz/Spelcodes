@@ -15,6 +15,13 @@ class LoginTest extends TestCase
 {
     private $userId;
 
+    public static function getTables()
+    {
+        return [
+            'users',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

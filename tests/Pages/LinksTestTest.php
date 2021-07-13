@@ -7,6 +7,13 @@ use Tests\TestCase;
 
 class LinksTestTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'links',
+        ];
+    }
+
     /** @test */
     public function it_shows_links()
     {

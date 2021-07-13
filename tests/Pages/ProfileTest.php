@@ -7,6 +7,13 @@ use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'users',
+        ];
+    }
+
     /** @test */
     public function it_shows_the_update_profile_page()
     {

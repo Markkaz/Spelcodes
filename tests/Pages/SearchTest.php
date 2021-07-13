@@ -8,6 +8,15 @@ use Tests\TestCase;
 
 class SearchTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'consoles',
+            'spellen',
+            'zoekwoorden',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

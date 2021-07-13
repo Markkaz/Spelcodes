@@ -30,6 +30,11 @@ class TestCase extends BaseTestCase
     ];
     protected $session = [];
 
+    public static function getTables()
+    {
+        return self::$tables;
+    }
+
     public static function setUpBeforeClass()
     {
         self::createDatabaseConnection();
@@ -55,7 +60,7 @@ class TestCase extends BaseTestCase
 
     protected static function createTables()
     {
-        foreach (self::$tables as $table) {
+        foreach (static::getTables() as $table) {
             self::$pdo->query(
                 file_get_contents(__DIR__ . '/../database/' . $table . '.sql')
             );
@@ -64,15 +69,18 @@ class TestCase extends BaseTestCase
 
     protected static function dropTables()
     {
-        $sql = 'DROP table ' . implode(', ', self::$tables) . ';';
-        self::$pdo->query($sql);
+        if(count(static::getTables()) > 0) {
+            $sql = 'DROP table ' . implode(', ', static::getTables()) . ';';
+            self::$pdo->query($sql);
+        }
+
     }
 
     protected function emptyTables()
     {
         self::$pdo->query('SET FOREIGN_KEY_CHECKS=0');
 
-        foreach (self::$tables as $table) {
+        foreach (static::getTables() as $table) {
             self::$pdo->query('TRUNCATE TABLE ' . $table);
         }
 

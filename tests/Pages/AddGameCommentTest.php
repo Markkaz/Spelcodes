@@ -14,6 +14,18 @@ class AddGameCommentTest extends TestCase
     private $gameId;
     private $topicId;
 
+    public static function getTables()
+    {
+        return [
+            'users',
+            'consoles',
+            'spellen',
+            'topics',
+            'spellenhulp',
+            'berichten',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();
