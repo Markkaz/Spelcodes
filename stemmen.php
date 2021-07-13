@@ -19,7 +19,7 @@ $cTPL = new Template('Templates/main.tpl');
 connectDB();
 
 if (isset($_GET['spelid'])) {
-    if (isset($_POST['stem'])) {
+    if (isset($_POST['stem']) && is_integer($_POST['stem']) && $_POST['stem'] > 0 && $_POST['stem'] <= 5) {
         $sQuery = "SELECT spelid FROM stemmen 
                WHERE spelid='" . add($_GET['spelid']) . "' AND ip='" . $_SERVER['REMOTE_ADDR'] . "';";
         if ($cResult = mysql_query($sQuery)) {
