@@ -30,4 +30,15 @@ class GameFactory
         $query = $pdo->prepare($sql);
         $query->execute([$consoleId, $gameId]);
     }
+
+    public static function vote(\PDO $pdo, $gameId, $vote, $ip)
+    {
+        $sql = 'INSERT INTO stemmen (spelid, ip) VALUES (?, ?);';
+        $query = $pdo->prepare($sql);
+        $query->execute([$gameId, $ip]);
+
+        $sql = 'UPDATE spellen SET rating=rating + ?, stemmen=stemmen+1 WHERE spelid=?;';
+        $query = $pdo->prepare($sql);
+        $query->execute([$vote, $gameId]);
+    }
 }
