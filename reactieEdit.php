@@ -19,12 +19,17 @@ $cTPL = new Template('Templates/main.tpl');
 connectDB();
 
 /* Permissies controleren */
-if ((isset($_GET['id'])) && (isset($_GET['spelid']))) {
+if (isset($_GET['id']) && isset($_GET['spelid']) && isset($_GET['topicid'])) {
     if (($cUser->checkSession()) || ($cUser->checkCookie())) {
-        $sQuery = "SELECT userid, topicid, bericht FROM berichten WHERE berichtid='" . $_GET['id'] . "';";
+        $sQuery = "SELECT b.userid, b.topicid, b.bericht 
+                    FROM berichten b
+                    JOIN spellenhulp sh ON b.topicid = sh.topicid
+                    WHERE b.berichtid='" . add($_GET['id']) . "' AND 
+                        b.topicid='" . add($_GET['topicid']) . "' AND 
+                        sh.spelid='" . add($_GET['spelid']) . "';";
         if ($cResult = mysql_query($sQuery)) {
             $aData = mysql_fetch_assoc($cResult);
-            if (($cUser->m_iPermis & 2) || ($cUser->m_iUserid == $aData['userid'])) {
+            if ($aData !== false && ($cUser->m_iPermis & 2 || $cUser->m_iUserid == $aData['userid'])) {
                 /* Controleren of het formulier is verzonden */
                 if (isset($_POST['bericht'])) {
                     $sQuery = "UPDATE berichten SET bericht='" . add($_POST['bericht']) . "' WHERE berichtid='" . add($_GET['id']) . "';";
