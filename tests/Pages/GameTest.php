@@ -15,6 +15,19 @@ class GameTest extends TestCase
     private $consoleId;
     private $gameId;
 
+    public static function getTables()
+    {
+        return [
+            'consoles',
+            'spellen',
+            'stemmen',
+            'users',
+            'topics',
+            'spellenhulp',
+            'berichten',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

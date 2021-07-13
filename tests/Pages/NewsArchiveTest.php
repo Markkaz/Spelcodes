@@ -8,6 +8,14 @@ use Tests\TestCase;
 
 class NewsArchiveTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'users',
+            'nieuws',
+        ];
+    }
+
     /** @test */
     public function it_shows_news_messages()
     {

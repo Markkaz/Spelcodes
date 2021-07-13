@@ -13,6 +13,15 @@ class ShowNewsTest extends TestCase
     private $userId;
     private $newsId;
 
+    public static function getTables()
+    {
+        return [
+            'users',
+            'nieuws',
+            'nieuwsreacties',
+        ];
+    }
+
     protected function setUp()
     {
         parent::setUp();

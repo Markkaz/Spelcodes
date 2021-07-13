@@ -6,6 +6,13 @@ use Tests\TestCase;
 
 class ContactTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'mail',
+        ];
+    }
+
     /** @test */
     public function it_shows_contact_form()
     {

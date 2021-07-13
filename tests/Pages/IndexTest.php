@@ -10,6 +10,18 @@ use Tests\TestCase;
 
 class IndexTest extends TestCase
 {
+    public static function getTables()
+    {
+        return [
+            'users',
+            'nieuws',
+            'nieuwsreacties',
+            'consoles',
+            'spellen',
+            'spellenview',
+        ];
+    }
+
     /** @test */
     public function it_shows_top_5_last_news_items()
     {

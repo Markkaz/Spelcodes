@@ -16,6 +16,13 @@ namespace Tests\Pages {
 
     class RegisterTest extends TestCase
     {
+        public static function getTables()
+        {
+            return [
+                'users',
+            ];
+        }
+
         /** @test */
         public function it_can_register_a_new_user()
         {
