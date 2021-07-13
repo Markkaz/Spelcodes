@@ -163,7 +163,7 @@ class ProfileTest extends TestCase
             ]
         );
 
-        $this->assertEquals('', $page);
+        $this->assertContains('Profiel bewerken', $page);
         $this->assertDatabaseHas('users', [
             'username' => 'Mark',
             'password' => hash('sha256', 'secret'),
