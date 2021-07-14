@@ -180,7 +180,7 @@ class TestCase extends BaseTestCase
         $lastNeedle = '';
         foreach($needles as $needle) {
             $currentPos = strpos($haystack, $needle);
-            if($currentPos < 0) {
+            if($currentPos === false) {
                 $this->fail("'" . $haystack . "' doesn\'t contain '" . $needle . "'");
             }
 
