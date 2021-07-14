@@ -3,6 +3,9 @@
         <testsuite name="pages">
             <directory>./tests/Pages</directory>
         </testsuite>
+        <testsuite name="forum">
+            <directory>./tests/Forum</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

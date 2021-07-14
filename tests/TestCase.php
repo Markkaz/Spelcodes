@@ -174,6 +174,25 @@ class TestCase extends BaseTestCase
         );
     }
 
+    public function assertContainsInOrder(array $needles, $haystack)
+    {
+        $lastPos = -2;
+        $lastNeedle = '';
+        foreach($needles as $needle) {
+            $currentPos = strpos($haystack, $needle);
+            if($currentPos < 0) {
+                $this->fail("'" . $haystack . "' doesn\'t contain '" . $needle . "'");
+            }
+
+            if($currentPos < $lastPos) {
+                $this->fail("'" . $haystack . "' contains '" . $needle . "' before '" . $lastNeedle . "'");
+            }
+
+            $lastPos = $currentPos;
+            $lastNeedle = $needle;
+        }
+    }
+
     protected function getFieldsFromTable($table, array $fields)
     {
         $sql = 'SELECT ' . implode(',', array_keys($fields)) . ' FROM ' . $table . ';';
