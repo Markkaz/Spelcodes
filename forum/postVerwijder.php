@@ -15,14 +15,20 @@ try {
     /* Controleren of de user is ingelogd */
     if ((!$cUser->checkSession()) && (!$cUser->checkCookie())) {
         header('Location: ../loginForm.php');
+        throw new ExitException();
     }
 
     /* Permissie controleren */
     $sQuery = "SELECT topic_id, post_poster FROM forum_posts WHERE post_id='" . add($_GET['postid']) . "';";
     if ($cResult = mysql_query($sQuery)) {
         $aData = mysql_fetch_assoc($cResult);
-        if ((!$aData['post_poster'] == $cUser->m_iUserid) && (!$cUser->m_iPermis & 2)) {
-            die('Geen permissie...');
+        if($aData === false) {
+            header('Http/1.0 404 Not Found');
+            throw new ExitException();
+        }
+        if (($aData['post_poster'] != $cUser->m_iUserid) && !($cUser->m_iPermis & 2)) {
+            header('Http/1.0 404 Not Found');
+            throw new ExitException();
         }
 
         /* Controleren of het formulier is verzonden */
@@ -30,6 +36,7 @@ try {
             $sQuery = "DELETE FROM forum_posts WHERE post_id='" . add($_GET['postid']) . "';";
             if (mysql_query($sQuery)) {
                 header('Location: viewTopic.php?p=0&topicid=' . $aData['topic_id']);
+                throw new ExitException();
             } else {
                 $cTPL->setPlace('TITEL', 'Fout met database');
                 $cTPL->setPlace('CONTENT', 'Door een fout met de database is je request niet verwerkt. Onze excuses voor het ongemak.');
