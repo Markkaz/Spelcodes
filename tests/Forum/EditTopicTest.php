@@ -161,7 +161,7 @@ class EditTopicTest extends TestCase
 
         $this->assertDatabaseHas('forum_topics', [
             'topic_id' => $this->topicId,
-            'topic_titel' => 'Interesting title'
+            'topic_titel' => 'Interesting topic'
         ]);
         $this->assertEquals('', $page);
     }
@@ -179,7 +179,7 @@ class EditTopicTest extends TestCase
 
         $this->assertDatabaseHas('forum_topics', [
             'topic_id' => $this->topicId,
-            'topic_titel' => 'Interesting title'
+            'topic_titel' => 'Interesting topic'
         ]);
         $this->assertEquals('', $page);
     }
