@@ -15,6 +15,7 @@ try {
     /* Controleren of je bent ingelogd */
     if ((!$cUser->checkSession()) && (!$cUser->checkCookie())) {
         header('Location: ../loginForm.php');
+        throw new ExitException();
     }
 
     /* Alle data ophalen */
@@ -24,17 +25,18 @@ try {
         $aData = mysql_fetch_assoc($cResult);
 
         /* Permissie controleren */
-        if ((!$cUser->m_iUserid == $aData['post_poster']) && (!$cUser->m_iPermis & 2)) {
-            die('Geen permissie...');
+        if (($cUser->m_iUserid != $aData['post_poster']) && !($cUser->m_iPermis & 2)) {
+            throw new ExitException();
         }
 
         /* Controleren of het formulier is verzonden */
-        if (isset($_POST['titel'])) {
+        if (isset($_POST['titel']) && isset($_POST['reactie'])) {
             $sQuery = "UPDATE forum_posts
                SET post_titel='" . add($_POST['titel']) . "', post_text='" . add($_POST['reactie']) . "'
                WHERE post_id='" . add($_GET['postid']) . "';";
             if (mysql_query($sQuery)) {
                 header('Location: viewTopic.php?p=0&topicid=' . $aData['topic_id']);
+                throw new ExitException();
             } else {
                 $cTPL->setPlace('TITEL', 'Fout met de database');
                 $cTPL->setPlace('CONTENT', 'Doordat er iets fout ging met de database is je request niet verwerkt. Onze excuses hiervoor.');
