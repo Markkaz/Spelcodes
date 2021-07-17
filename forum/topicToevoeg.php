@@ -7,7 +7,19 @@ try {
     include('Includes/header.php');
 
     /* Controleren of er een forumid is */
-    if (!isset($_GET['forumid'])) {
+    if (!isset($_GET['forumid']) || !isset($_POST['titel']) || !isset($_POST['reactie'])) {
+        header('Http/1.0 404 Not Found');
+        throw new ExitException();
+    }
+
+    $sql = 'SELECT EXISTS (SELECT * FROM forum_forums WHERE forum_id = \'' . add($_GET['forumid']) . '\') as forum_exists;';
+    $result = mysql_query($sql);
+    if(!$result) {
+        header('Http/1.0 500 Internal Server Error');
+        throw new ExitException();
+    }
+    $data = mysql_fetch_assoc($result);
+    if($data === false || !$data['forum_exists']) {
         header('Http/1.0 404 Not Found');
         throw new ExitException();
     }
@@ -15,6 +27,7 @@ try {
     /* Controleren of de user is ingelogd */
     if ((!$cUser->checkSession()) || (!$cUser->checkCookie())) {
         header('Location: ../loginForm.php');
+        throw new ExitException();
     }
 
     /* Melding van nieuwe post bij forum plaatsen */
@@ -38,18 +51,16 @@ try {
             } else {
                 $cTPL->setPlace('TITEL', 'Fout met database');
                 $cTPL->setPlace('CONTENT', 'Doordat er iets fout is gegaan met de database, is er alleen maar een topic geplaatst en geen bericht. Onze excuses voor het ongemak.');
+                $cTPL->show();
             }
         } else {
             $cTPL->setPlace('TITEL', 'Fout met database');
             $cTPL->setPlace('CONTENT', 'Doordat er iets fout is gegaan met de database, is je request niet verwerkt. Onze excuses hiervoor.');
-            print $sQuery . '<br>';
-            print mysql_error();
-            throw new ExitException();
+            $cTPL->show();
         }
     } else {
         $cTPL->setPlace('TITEL', 'Fout met database');
         $cTPL->setPlace('CONTENT', 'Er is iets fout gegaan met de database. Hierdoor is je request niet verwerkt. Onze excuses hiervoor.');
+        $cTPL->show();
     }
-
-    $cTPL->show();
 } catch (ExitException $e) {}

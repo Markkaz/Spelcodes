@@ -195,7 +195,7 @@ class AddTopicTest extends TestCase
 
         $this->assertDatabaseMissing('forum_topics', [
             'forum_id' => $this->forumId,
-            'forum_titel' => 'Random title',
+            'topic_titel' => 'Random title',
             'topic_poster' => $userId,
             'last_post' => $userId,
             'topic_views' => 0
