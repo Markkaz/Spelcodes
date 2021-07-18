@@ -13,8 +13,9 @@ try {
     }
 
     /* Controleren of je bent ingelogd */
-    if ((!$cUser->checkSession()) && ($cUser->checkCookie())) {
+    if (!$cUser->checkSession() && !$cUser->checkCookie()) {
         header('Location: ../loginForm.php');
+        throw new ExitException();
     }
 
     /* Data ophalen */
@@ -23,18 +24,20 @@ try {
         $aData = mysql_fetch_assoc($cResult);
 
         /* Permissie controleren */
-        if ((!$cUser->m_iUserid == $aData['topic_poster']) && (!$cUser->m_iPermis & 2)) {
-            die('Geen permissie...');
+        if ($cUser->m_iUserid != $aData['topic_poster'] && !($cUser->m_iPermis & 2)) {
+            header('Http/1.0 404 Not Found');
+            throw new ExitException();
         }
 
         /* Controleren of het formulier is verzonden */
         if (isset($_POST['delete'])) {
             /* Berichten verwijderen */
-            $sQuery = "DELETE FROM forum_posts.sql WHERE topic_id='" . add($_GET['topicid']) . "';";
+            $sQuery = "DELETE FROM forum_posts WHERE topic_id='" . add($_GET['topicid']) . "';";
             if (mysql_query($sQuery)) {
                 $sQuery = "DELETE FROM forum_topics WHERE topic_id='" . add($_GET['topicid']) . "';";
                 if (mysql_query($sQuery)) {
                     header('Location: viewForum.php?forumid=' . $aData['forum_id']);
+                    throw new ExitException();
                 } else {
                     $cTPL->setPlace('TITEL', 'Fout met database');
                     $cTPL->setPlace('CONTENT', 'Door een fout met de database, zijn alleen de berichten uit het topic verwijderd.');

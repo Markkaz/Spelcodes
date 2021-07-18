@@ -13,7 +13,6 @@ use Webdevils\Spelcodes\Permissions;
 class DeleteTopicTest extends TestCase
 {
     private $userId;
-    private $postId;
     private $topicId;
 
     public static function getTables()
@@ -59,7 +58,7 @@ class DeleteTopicTest extends TestCase
             $this->userId
         );
 
-        $this->postId = ForumPostFactory::create(
+        ForumPostFactory::create(
             self::$pdo,
             $this->topicId,
             $this->userId,
@@ -184,5 +183,25 @@ class DeleteTopicTest extends TestCase
         $this->assertDatabaseHas('forum_topics', [
             'topic_titel' => 'Interesting topic'
         ]);
+    }
+
+    /** @test */
+    public function it_shows_404_when_forum_topic_doesnt_exist()
+    {
+        $this->login(null, Permissions::MANAGE_COMMENTS);
+
+        $page = $this->visitPage(
+            __DIR__ . '/../../forum/topicVerwijder.php',
+            ['topic_id' => 999]
+        );
+        $this->assertDatabaseHas('forum_posts', [
+            'post_titel' => 'A random reply',
+            'post_text' => 'With some random argument'
+        ]);
+        $this->assertDatabaseHas('forum_topics', [
+            'topic_titel' => 'Interesting topic'
+        ]);
+
+        $this->assertEquals('', $page);
     }
 }
