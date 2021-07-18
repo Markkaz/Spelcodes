@@ -73,7 +73,7 @@ class EditTopicTest extends TestCase
     /** @test */
     public function it_shows_edit_form_to_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicBewerk.php',
@@ -104,7 +104,7 @@ class EditTopicTest extends TestCase
     /** @test */
     public function it_allows_forum_moderator_to_edit_topic()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicBewerk.php',
@@ -140,7 +140,7 @@ class EditTopicTest extends TestCase
     /** @test */
     public function it_shows_404_when_topic_doesnt_exist()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicBewerk.php',

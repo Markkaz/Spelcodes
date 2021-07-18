@@ -92,7 +92,7 @@ class DeleteGameCommentTest extends TestCase
     /** @test */
     public function it_allows_an_admin_to_see_the_delete_form()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieDelete.php',
@@ -130,7 +130,7 @@ class DeleteGameCommentTest extends TestCase
     /** @test */
     public function it_allows_the_admin_to_delete_a_comment()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieDelete.php',

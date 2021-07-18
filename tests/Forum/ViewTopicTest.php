@@ -143,7 +143,7 @@ class ViewTopicTest extends TestCase
     /** @test */
     public function it_shows_edit_and_delete_buttons_when_logged_in_user_is_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/viewTopic.php',

@@ -108,7 +108,7 @@ class ViewForumTest extends TestCase
     /** @test */
     public function it_shows_topic_edit_delete_and_move_buttons_for_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/viewForum.php',

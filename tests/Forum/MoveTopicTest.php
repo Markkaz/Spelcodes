@@ -68,7 +68,7 @@ class MoveTopicTest extends TestCase
     /** @test */
     public function it_shows_the_topic_move_form_to_topic_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicMove.php',
@@ -85,7 +85,7 @@ class MoveTopicTest extends TestCase
     /** @test */
     public function it_allows_the_topic_owner_to_move_a_topic()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicMove.php',
