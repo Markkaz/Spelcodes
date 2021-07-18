@@ -19,8 +19,22 @@ try {
     }
 
     /* Permissie controleren */
-    if (!$cUser->m_iPermis & 4) {
-        die('Geen permissie...');
+    if (!($cUser->m_iPermis & 4)) {
+        header('Http/1.0 404 Not Found');
+        throw new ExitException();
+    }
+
+    $sql = 'SELECT EXISTS(SELECT * FROM forum_categories WHERE cat_id=' . add($_GET['catid']) . ') as cat_exists;';
+    $result = mysql_query($sql);
+    if(!$result) {
+        header('Http/1.0 500 Internal Server Error');
+        throw new ExitException();
+    }
+
+    $data = mysql_fetch_assoc($result);
+    if($data === false || !$data['cat_exists']) {
+        header('Http/1.0 404 Not Found');
+        throw new ExitException();
     }
 
     /* Controleren of het formulier is verzonden */
@@ -34,6 +48,7 @@ try {
                 $sQuery = "DELETE FROM forum_categories WHERE cat_id='" . add($_GET['catid']) . "';";
                 if (mysql_query($sQuery)) {
                     header('Location: index.php');
+                    throw new ExitException();
                 } else {
                     $cTPL->setPlace('TITEL', 'Fout met database');
                     $cTPL->setPlace('CONTENT', 'Door een fout met de database kon de categorie niet verwijderd worden');
