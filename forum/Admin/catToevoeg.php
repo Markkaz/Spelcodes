@@ -15,21 +15,22 @@ try {
     /* Controleren of je bent ingelogd */
     if ((!$cUser->checkSession()) && (!$cUser->checkCookie())) {
         header('Location: ../../loginForm.php');
+        throw new ExitException();
     }
 
     /* Permissie controleren */
-    if (!$cUser->m_iPermis & 4) {
-        die('Geen permissie...');
-    }
-
-    /* Formulier verwerken */
-    $sQuery = "INSERT INTO forum_categories (cat_id, cat_titel, cat_order)
-           VALUES ('', '" . add($_POST['titel']) . "', '" . add($_POST['order']) . "');";
-    if (mysql_query($sQuery)) {
-        header('Location: index.php');
+    if ($cUser->m_iPermis & 4) {
+        /* Formulier verwerken */
+        $sQuery = "INSERT INTO forum_categories (cat_titel, cat_order)
+           VALUES ('" . add($_POST['titel']) . "', '" . add($_POST['order']) . "');";
+        if (mysql_query($sQuery)) {
+            header('Location: index.php');
+        } else {
+            $cTPL->setPlace('TITEL', 'Fout met database');
+            $cTPL->setPlace('CONTENT', 'Door een fout met de database, is je categorie niet toegevoegd.');
+            $cTPL->show();
+        }
     } else {
-        $cTPL->setPlace('TITEL', 'Fout met database');
-        $cTPL->setPlace('CONTENT', 'Door een fout met de database, is je categorie niet toegevoegd.');
-        $cTPL->show();
+        header('Http/1.0 404 Not Found');
     }
 } catch (ExitException $e) {}
