@@ -96,7 +96,7 @@ class EditGameCommentTest extends TestCase
     /** @test */
     public function it_shows_the_edit_comment_form_for_the_admin()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -131,7 +131,7 @@ class EditGameCommentTest extends TestCase
     /** @test */
     public function it_shows_404_when_id_parameter_is_missing()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -147,7 +147,7 @@ class EditGameCommentTest extends TestCase
     /** @test */
     public function it_shows_404_when_topicid_parameter_is_missing()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -163,7 +163,7 @@ class EditGameCommentTest extends TestCase
     /** @test */
     public function it_shows_404_when_spelid_parameter_is_missing()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -194,7 +194,7 @@ class EditGameCommentTest extends TestCase
     /** @test */
     public function it_shows_404_when_comment_doesnt_exist()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -219,7 +219,7 @@ class EditGameCommentTest extends TestCase
         );
         TopicFactory::attach(self::$pdo, $topicId, $this->gameId);
 
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',
@@ -238,7 +238,7 @@ class EditGameCommentTest extends TestCase
     {
         TopicFactory::detach(self::$pdo, $this->topicId, $this->gameId);
 
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../reactieEdit.php',

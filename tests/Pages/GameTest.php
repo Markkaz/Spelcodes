@@ -267,7 +267,7 @@ class GameTest extends TestCase
     /** @test */
     public function it_shows_edit_button_for_user_with_manage_comments_rights()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $userId = UserFactory::create(
             self::$pdo,

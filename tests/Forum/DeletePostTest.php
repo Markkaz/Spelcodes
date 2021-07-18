@@ -83,7 +83,7 @@ class DeletePostTest extends TestCase
     /** @test */
     public function it_shows_delete_form_to_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postVerwijder.php',
@@ -115,7 +115,7 @@ class DeletePostTest extends TestCase
     /** @test */
     public function it_allows_forum_moderator_to_delete_post()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postVerwijder.php',
@@ -134,7 +134,7 @@ class DeletePostTest extends TestCase
     /** @test */
     public function it_shows_404_when_postid_parameter_is_missing()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postVerwijder.php'
@@ -146,7 +146,7 @@ class DeletePostTest extends TestCase
     /** @test */
     public function it_shows_404_when_post_doesnt_exist()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postVerwijder.php',

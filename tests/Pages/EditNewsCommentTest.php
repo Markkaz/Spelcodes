@@ -67,7 +67,7 @@ class EditNewsCommentTest extends TestCase
     /** @test */
     public function it_shows_the_edit_form_when_the_user_is_admin()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../nieuwsEdit.php',
@@ -135,7 +135,7 @@ class EditNewsCommentTest extends TestCase
     /** @test */
     public function it_edits_comment_when_user_is_admin()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../nieuwsEdit.php',

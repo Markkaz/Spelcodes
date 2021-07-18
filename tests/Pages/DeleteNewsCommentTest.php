@@ -67,7 +67,7 @@ class DeleteNewsCommentTest extends TestCase
     /** @test */
     public function it_shows_the_delete_form_for_the_admin_user()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../nieuwsDelete.php',
@@ -116,7 +116,7 @@ class DeleteNewsCommentTest extends TestCase
     /** @test */
     public function it_shows_404_when_comment_doesnt_exist()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../nieuwsDelete.php',
@@ -148,7 +148,7 @@ class DeleteNewsCommentTest extends TestCase
     /** @test */
     public function it_deletes_comment_when_admin_deletes_it()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../nieuwsDelete.php',

@@ -85,7 +85,7 @@ class EditPostTest extends TestCase
     /** @test */
     public function it_shows_edit_form_to_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postBewerk.php',
@@ -122,7 +122,7 @@ class EditPostTest extends TestCase
     /** @test */
     public function it_allows_forum_moderator_to_edit_their_post()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/postBewerk.php',

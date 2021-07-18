@@ -6,6 +6,9 @@
         <testsuite name="forum">
             <directory>./tests/Forum</directory>
         </testsuite>
+        <testsuite name="forum/admin">
+            <directory>./tests/Forum/Admin</directory>
+        </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">

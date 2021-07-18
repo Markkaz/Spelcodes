@@ -4,5 +4,6 @@ namespace Webdevils\Spelcodes;
 
 interface Permissions
 {
-    const MANAGE_COMMENTS = 2;
+    const FORUM_MODERATOR = 2;
+    const FORUM_ADMIN = 4;
 }

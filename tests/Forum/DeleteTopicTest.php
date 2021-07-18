@@ -70,7 +70,7 @@ class DeleteTopicTest extends TestCase
     /** @test */
     public function it_shows_delete_topic_form_to_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicVerwijder.php',
@@ -96,7 +96,7 @@ class DeleteTopicTest extends TestCase
     /** @test */
     public function it_deletes_forum_topic_on_request_of_the_forum_moderator()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicVerwijder.php',
@@ -188,7 +188,7 @@ class DeleteTopicTest extends TestCase
     /** @test */
     public function it_shows_404_when_forum_topic_doesnt_exist()
     {
-        $this->login(null, Permissions::MANAGE_COMMENTS);
+        $this->login(null, Permissions::FORUM_MODERATOR);
 
         $page = $this->visitPage(
             __DIR__ . '/../../forum/topicVerwijder.php',
