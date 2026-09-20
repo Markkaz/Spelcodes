@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 function setcookie($key, $value, $expiration)
 {
-    var_dump($key);
     $_COOKIE[$key] = $value;
 }
 

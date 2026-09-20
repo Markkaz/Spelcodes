@@ -5,7 +5,7 @@ namespace Tests\Pages;
 use Tests\Factories\LinkFactory;
 use Tests\TestCase;
 
-class LinksTestTest extends TestCase
+class LinksTest extends TestCase
 {
     public static function getTables()
     {
