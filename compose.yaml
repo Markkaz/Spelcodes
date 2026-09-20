@@ -1,0 +1,80 @@
+# Development stack.  make up  ->  http://localhost:8080
+#
+# Source is bind-mounted, so edits are live. Xdebug listens on 9003 and starts
+# only when triggered (XDEBUG_TRIGGER=1 or an IDE extension), so ordinary
+# requests stay fast.
+
+name: spelcodes-dev
+
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    depends_on:
+      php:
+        condition: service_healthy
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    volumes:
+      - ./docker/nginx/templates:/etc/nginx/templates:ro
+      # nginx must see the same files php does, to serve static assets itself.
+      - .:/var/www/html:ro
+    environment:
+      # Change to /var/www/html/public once Step 0 lands the front controller.
+      NGINX_ROOT: /var/www/html
+      NGINX_PHP_UPSTREAM: php:9000
+      NGINX_ENVSUBST_FILTER: "^NGINX_"
+    restart: unless-stopped
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      target: dev
+      args:
+        PHP_VERSION: "8.4"
+        UID: "${UID:-1000}"
+        GID: "${GID:-1000}"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: "${MYSQL_DATABASE:-spelcodes}"
+      DB_USER: "${MYSQL_USER:-homestead}"
+      DB_PASS: "${MYSQL_PASSWORD:-secret}"
+      APP_ENV: dev
+      PHP_IDE_CONFIG: "serverName=spelcodes"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.4
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:-root}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-spelcodes}"
+      MYSQL_USER: "${MYSQL_USER:-homestead}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:-secret}"
+    ports:
+      # Exposed so you can point a GUI client at it. Remove if you'd rather not.
+      - "${DB_PORT:-33061}:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./database:/schema:ro
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD:-root}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+
+volumes:
+  db-data:

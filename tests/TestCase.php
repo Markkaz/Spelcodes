@@ -58,6 +58,16 @@ class TestCase extends BaseTestCase
         self::$pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     }
 
+    protected static function disableForeignKeys()
+    {
+        self::$pdo->query('SET FOREIGN_KEY_CHECKS=0');
+    }
+
+    protected static function enableForeignKeys()
+    {
+        self::$pdo->query('SET FOREIGN_KEY_CHECKS=1');
+    }
+
     protected static function createTables()
     {
         foreach (static::getTables() as $table) {
@@ -69,22 +79,25 @@ class TestCase extends BaseTestCase
 
     protected static function dropTables()
     {
+        self::disableForeignKeys();
+
         if(count(static::getTables()) > 0) {
             $sql = 'DROP table ' . implode(', ', static::getTables()) . ';';
             self::$pdo->query($sql);
         }
 
+        self::enableForeignKeys();
     }
 
     protected function emptyTables()
     {
-        self::$pdo->query('SET FOREIGN_KEY_CHECKS=0');
+        self::disableForeignKeys();
 
         foreach (static::getTables() as $table) {
             self::$pdo->query('TRUNCATE TABLE ' . $table);
         }
 
-        self::$pdo->query('SET FOREIGN_KEY_CHECKS=1');
+        self::enableForeignKeys();
     }
 
     protected function visitPage($pagePath, array $get = [], array $post = [])

@@ -33,7 +33,12 @@ class IndexTest extends TestCase
             '127.0.0.1'
         );
 
-        NewsFactory::create(self::$pdo, $userId, 'Invisible news item', 'This news item is invisible');
+        NewsFactory::create(
+            self::$pdo, $userId,
+            'Invisible news item',
+            'This news item is invisible',
+            (new \DateTime())->sub(new \DateInterval('P1D'))
+        );
         foreach (range(1, 5) as $i) {
             NewsFactory::create(self::$pdo, $userId, 'News item '.$i, 'Body of news item '.$i);
         }
@@ -42,7 +47,9 @@ class IndexTest extends TestCase
             __DIR__ . '/../../index.php'
         );
 
-        $this->assertContains('News item', $page);
+        foreach (range(1, 5) as $i) {
+            $this->assertContains('News item '.$i, $page);
+        }
         $this->assertNotContains('Invisible news item', $page);
     }
 
