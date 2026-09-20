@@ -53,7 +53,12 @@ class TestCase extends BaseTestCase
 
     protected static function createDatabaseConnection()
     {
-        self::$pdo = new \PDO('mysql:host=localhost;dbname=spelcodes', 'homestead', 'secret');
+        require_once __DIR__ . '/../Includes/connect.php';
+
+        $dsn = MYSQL_HOST === 'localhost'
+            ? sprintf('mysql:host=%s;dbname=%s', MYSQL_HOST, MYSQL_DB)
+            : sprintf('mysql:host=%s;port=%s;dbname=%s', MYSQL_HOST, MYSQL_PORT, MYSQL_DB);
+        self::$pdo = new \PDO($dsn, MYSQL_USER, MYSQL_PASS);
         self::$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         self::$pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     }

@@ -41,9 +41,9 @@ services:
         condition: service_healthy
     volumes:
       - .:/var/www/html
-      - db-socket:/var/run/mysqld
     environment:
       DB_HOST: db
+      DB_PORT: "3306"
       DB_NAME: spelcodes
       DB_USER: homestead
       DB_PASS: secret
@@ -73,12 +73,9 @@ services:
       # Keeps the image's vendor/ visible underneath the source bind mount,
       # which would otherwise hide it behind the host's (empty) directory.
       - legacy-vendor:/var/www/html/vendor
-      # Sharing the MySQL socket is what lets tests/TestCase.php connect to
-      # "localhost" without editing a line of the repo. See app-legacy.ini.
-      # Note this is db-test's socket, not db's.
-      - db-test-socket:/var/run/mysqld
     environment:
       DB_HOST: db-test
+      DB_PORT: "3306"
       DB_NAME: spelcodes
       DB_USER: homestead
       DB_PASS: secret
@@ -115,8 +112,6 @@ services:
       MYSQL_PASSWORD: secret
     tmpfs:
       - /var/lib/mysql
-    volumes:
-      - db-test-socket:/var/run/mysqld
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
       interval: 3s
@@ -145,7 +140,6 @@ services:
       - "${LEGACY_DB_PORT:-33062}:3306"
     volumes:
       - legacy-db-data:/var/lib/mysql
-      - db-socket:/var/run/mysqld
       - ./database:/schema:ro
       - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
     healthcheck:
@@ -157,6 +151,4 @@ services:
 
 volumes:
   legacy-db-data:
-  db-socket:
-  db-test-socket:
   legacy-vendor:
