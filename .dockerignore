@@ -1,0 +1,21 @@
+.git
+.gitignore
+.idea
+vendor
+node_modules
+backup
+*.md
+
+# Deployment residue and historic junk that should not reach any image.
+# These want deleting from the repo entirely (Step 1), but until then they
+# must not be baked into a build.
+error_log
+*/error_log
+count.txt
+.ftpquota
+google*.html
+
+# Docker's own files are only needed by the build context, not the image.
+compose*.yaml
+.env
+.env.*

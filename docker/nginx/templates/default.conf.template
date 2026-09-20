@@ -1,0 +1,70 @@
+# Substituted at container start by the nginx image's envsubst step.
+# Only ${NGINX_*} variables are replaced (see NGINX_ENVSUBST_FILTER in compose),
+# so nginx's own $uri, $args and friends survive untouched.
+#
+# NGINX_ROOT lets one config serve both layouts:
+#   /var/www/html          - the repo as it stands today (pages at the root)
+#   /var/www/html/public   - after Step 0 introduces the front controller
+#
+server {
+    listen 80;
+    server_name _;
+    root ${NGINX_ROOT};
+    index index.php index.html;
+
+    client_max_body_size 16m;
+
+    # --- Hardening -------------------------------------------------------
+    # Until the source moves behind public/, the document root contains
+    # Classes/, Includes/, tests/ and the .sql schema. Deny them explicitly.
+    location ~ ^/(Classes|Includes|Templates|tests|database|vendor|docker)/ {
+        deny all;
+    }
+    location ~ ^/(forum|admin)/(Includes|Templates|Classes)/ {
+        deny all;
+    }
+    location ~* \.(sql|tpl|lock|json|md|log|txt)$ {
+        deny all;
+    }
+    location ~ /\. {
+        deny all;
+    }
+    # Historic junk that should not exist after Step 1, blocked meanwhile.
+    location ~ ^/(error_log|count\.txt|\.ftpquota)$ {
+        deny all;
+    }
+
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+    # --- Routing ---------------------------------------------------------
+    # Legacy layout: /login.php matches the PHP location directly.
+    # Front-controller layout: anything unmatched falls through to index.php.
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass ${NGINX_PHP_UPSTREAM};
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param HTTPS $http_x_forwarded_proto;
+        fastcgi_read_timeout 60s;
+        fastcgi_hide_header X-Powered-By;
+    }
+
+    # The game artwork under spellen/ is the one thing that survived from 2005.
+    location ~* \.(jpg|jpeg|png|gif|ico|css|js|woff2?)$ {
+        expires 30d;
+        access_log off;
+        try_files $uri =404;
+    }
+
+    access_log /dev/stdout;
+    error_log  /dev/stderr warn;
+}

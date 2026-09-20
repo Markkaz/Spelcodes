@@ -1,0 +1,68 @@
+# Test stack.  make test  /  make test-coverage
+#
+# Deliberately shaped like CI: no bind mount by default, database on tmpfs so
+# the TRUNCATE-per-test pattern in tests/TestCase.php isn't disk-bound, and the
+# whole thing tears down cleanly.
+#
+# ASSUMPTION worth checking: tests/TestCase.php currently hardcodes
+#   new \PDO('mysql:host=localhost;dbname=spelcodes', 'homestead', 'secret')
+# The credentials below match it, but the host does not - inside Docker the
+# database is `db`, not `localhost`. That one line needs to read the DB_HOST
+# environment variable before this stack can go green. See docker/README.md.
+
+name: spelcodes-test
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      target: test
+      args:
+        PHP_VERSION: "8.4"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: spelcodes
+      DB_USER: homestead
+      DB_PASS: secret
+      APP_ENV: test
+    volumes:
+      # Mount the source while you're iterating locally so you don't rebuild
+      # on every edit. CI runs without this line - comment it out to reproduce
+      # CI exactly.
+      - .:/var/www/html
+      # Keeps the image's vendor/ visible underneath the bind mount.
+      - test-vendor:/var/www/html/vendor
+
+  db:
+    image: mysql:8.4
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      # Durability is pointless for a throwaway test database, and turning it
+      # off makes the per-test truncate noticeably faster.
+      - --innodb-flush-log-at-trx-commit=0
+      - --innodb-doublewrite=0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spelcodes
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    tmpfs:
+      - /var/lib/mysql
+    # No schema mount on purpose: tests/TestCase.php creates and drops its own
+    # tables. Pre-loading database/*.sql here makes every test class fail with
+    # "Table 'users' already exists".
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 20s
+
+volumes:
+  test-vendor:

@@ -1,0 +1,134 @@
+# Production stack.
+#
+# Differences from dev that matter:
+#   - no bind mounts; the image contains the code and is immutable
+#   - image pinned by tag, built in CI, never built on the server
+#   - read-only root filesystem with explicit tmpfs for the few writable paths
+#   - every secret comes from .env / your secret store, nothing is defaulted
+#   - no database port published to the host
+#
+# TLS is deliberately not handled here. Put Caddy or a load balancer in front
+# and forward X-Forwarded-Proto; the nginx config already passes it to PHP.
+
+name: spelcodes
+
+services:
+  nginx:
+    # Built from the `web` target so it carries the same document root as the
+    # php image. No bind mounts, no shared volume, no drift between the two.
+    image: "${WEB_IMAGE:?set WEB_IMAGE to a tagged image built by CI}"
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      target: web
+      args:
+        PHP_VERSION: "8.4"
+    depends_on:
+      php:
+        condition: service_healthy
+    ports:
+      - "${HTTP_BIND:-127.0.0.1}:${HTTP_PORT:-8080}:80"
+    environment:
+      NGINX_ROOT: /var/www/html/public
+      NGINX_PHP_UPSTREAM: php:9000
+      NGINX_ENVSUBST_FILTER: "^NGINX_"
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    restart: always
+    logging: &logging
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  php:
+    image: "${APP_IMAGE:?set APP_IMAGE to a tagged image built by CI}"
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+      target: prod
+      args:
+        PHP_VERSION: "8.4"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: "${MYSQL_DATABASE:?required}"
+      DB_USER: "${MYSQL_USER:?required}"
+      DB_PASS: "${MYSQL_PASSWORD:?required}"
+      APP_ENV: prod
+      APP_URL: "${APP_URL:?required}"
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/run
+      # PHP sessions. Move to Redis or the database before you run more than
+      # one php container, or logins will be sticky-dependent.
+      - /var/lib/php/sessions
+    security_opt:
+      - no-new-privileges:true
+    restart: always
+    logging: *logging
+
+  db:
+    image: mysql:8.4
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:?required}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:?required}"
+      MYSQL_USER: "${MYSQL_USER:?required}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:?required}"
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./backup:/backup
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    security_opt:
+      - no-new-privileges:true
+    restart: always
+    logging: *logging
+
+  # Nightly dump to ./backup, 14 days retained. This is the bare minimum, and
+  # it is worthless until you have restored from it once - see docker/README.md.
+  backup:
+    image: mysql:8.4
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      MYSQL_PWD: "${MYSQL_ROOT_PASSWORD:?required}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:?required}"
+    volumes:
+      - ./backup:/backup
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        while true; do
+          ts=$$(date +%Y%m%d-%H%M%S)
+          echo "[backup] dumping $${MYSQL_DATABASE} at $${ts}"
+          mysqldump --host=db --user=root --single-transaction \
+            --routines --triggers "$${MYSQL_DATABASE}" \
+            | gzip > "/backup/$${MYSQL_DATABASE}-$${ts}.sql.gz" \
+            && echo "[backup] ok" || echo "[backup] FAILED"
+          find /backup -name '*.sql.gz' -mtime +14 -delete
+          sleep 86400
+        done
+    restart: always
+    logging: *logging
+
+volumes:
+  db-data:

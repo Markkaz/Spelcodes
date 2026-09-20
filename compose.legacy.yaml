@@ -1,0 +1,162 @@
+# Legacy PHP 5.6 stack. TEMPORARY - delete once the suite is green on 8.4.
+#
+#   make legacy-up      browse the 2005 site at http://localhost:8081
+#   make legacy-test    run the original suite, unchanged
+#
+# Runs on a separate port and a separate project name from the modern stack, so
+# both can be up at once and you can compare behaviour side by side. That
+# comparison is the reason this environment exists.
+#
+# MySQL is 5.7, not 8.4: PHP 5.6's client libraries cannot speak MySQL 8's
+# default caching_sha2_password authentication. 5.7 also still defaults to
+# mysql_native_password, which is what the old code expects.
+
+name: spelcodes-legacy
+
+services:
+  nginx:
+    image: nginx:1.27-alpine
+    depends_on:
+      php:
+        condition: service_healthy
+    ports:
+      - "${LEGACY_HTTP_PORT:-8081}:80"
+    volumes:
+      - ./docker/nginx/templates:/etc/nginx/templates:ro
+      - .:/var/www/html:ro
+    environment:
+      # Pages live at the repo root in this era. No public/ directory exists.
+      NGINX_ROOT: /var/www/html
+      NGINX_PHP_UPSTREAM: php:9000
+      NGINX_ENVSUBST_FILTER: "^NGINX_"
+
+  php:
+    platform: linux/amd64        # php:5.6 has no arm64 build
+    build:
+      context: .
+      dockerfile: docker/php56/Dockerfile
+      target: legacy
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - .:/var/www/html
+      - db-socket:/var/run/mysqld
+    environment:
+      DB_HOST: db
+      DB_NAME: spelcodes
+      DB_USER: homestead
+      DB_PASS: secret
+      APP_ENV: legacy
+
+  # Two ways to use this service:
+  #
+  #   make legacy-test          one-shot: build, run, tear down (CI-shaped)
+  #   make legacy-test-start    leave it running, then `make lt` to re-run
+  #                             the suite in milliseconds via `exec`
+  #
+  # The idle command below is what makes the second mode possible: the service
+  # stays up instead of exiting after phpunit. `run`/`exec` both override it
+  # with an explicit command, so the one-shot mode is unaffected.
+  test:
+    platform: linux/amd64
+    profiles: ["test"]
+    build:
+      context: .
+      dockerfile: docker/php56/Dockerfile
+      target: legacy-test
+    depends_on:
+      db-test:
+        condition: service_healthy
+    volumes:
+      - .:/var/www/html
+      # Keeps the image's vendor/ visible underneath the source bind mount,
+      # which would otherwise hide it behind the host's (empty) directory.
+      - legacy-vendor:/var/www/html/vendor
+      # Sharing the MySQL socket is what lets tests/TestCase.php connect to
+      # "localhost" without editing a line of the repo. See app-legacy.ini.
+      # Note this is db-test's socket, not db's.
+      - db-test-socket:/var/run/mysqld
+    environment:
+      DB_HOST: db-test
+      DB_NAME: spelcodes
+      DB_USER: homestead
+      DB_PASS: secret
+    command: ["tail", "-f", "/dev/null"]
+
+  # Separate database server for the suite, deliberately EMPTY.
+  #
+  # tests/TestCase.php manages its own schema: setUpBeforeClass() calls
+  # createTables() and tearDownAfterClass() drops them again. Pre-loading
+  # database/*.sql here makes every test class fail with
+  #   SQLSTATE[42S01]: Table 'users' already exists
+  # so this service mounts neither ./database nor the init script.
+  #
+  # It also runs on tmpfs: the suite truncates between tests, and there is
+  # nothing worth persisting.
+  #
+  # Foreign key checks stay ON here. Several pages rely on the database to
+  # reject invalid input - addNieuws.php has no existence check of its own and
+  # returns its 404 only because the FK insert fails - so disabling them makes
+  # real tests fail for fake reasons.
+  db-test:
+    platform: linux/amd64
+    profiles: ["test"]
+    image: mysql:5.7
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --sql-mode=
+      - --innodb-flush-log-at-trx-commit=0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spelcodes
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    tmpfs:
+      - /var/lib/mysql
+    volumes:
+      - db-test-socket:/var/run/mysqld
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 40s
+
+  # Database behind the running site. This one DOES get the schema loaded.
+  db:
+    platform: linux/amd64
+    image: mysql:5.7
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      # MySQL 5.7 enables STRICT_TRANS_TABLES and ONLY_FULL_GROUP_BY by
+      # default. 2005-era MySQL did neither, and the legacy queries will fail
+      # under them. Emptying sql_mode reproduces the original permissiveness.
+      # Do NOT carry this setting over to the modern stack.
+      - --sql-mode=
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spelcodes
+      MYSQL_USER: homestead
+      MYSQL_PASSWORD: secret
+    ports:
+      - "${LEGACY_DB_PORT:-33062}:3306"
+    volumes:
+      - legacy-db-data:/var/lib/mysql
+      - db-socket:/var/run/mysqld
+      - ./database:/schema:ro
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 40s
+
+volumes:
+  legacy-db-data:
+  db-socket:
+  db-test-socket:
+  legacy-vendor:
