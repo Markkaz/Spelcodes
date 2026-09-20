@@ -110,6 +110,27 @@ lt-file: ## One file: make lt-file FILE=tests/Pages/LoginTest.php
 lt-shell: ## Shell inside the running test container
 	@$(LEGACYT) exec test bash
 
+lt-coverage: ## Coverage report (Xdebug 2.5.5, baked into the test image)
+	@$(LEGACYT) exec test vendor/bin/phpunit \
+		--coverage-html coverage/html --coverage-text
+	@echo ""
+	@echo "HTML report: coverage/html/index.html  (open it on your host)"
+
+untested: ## List application files that have no test file at all
+	@echo "Files with no matching test:"
+	@$(LEGACYT) exec test sh -c '\
+		for f in $$(find . -name "*.php" \
+			-not -path "./vendor/*" -not -path "./tests/*" \
+			-not -path "./docker/*" -not -path "./Templates/*"); do \
+			base=$$(basename $$f .php); \
+			grep -rqil "$$base" tests/ || echo "  $$f"; \
+		done' | sort
+
+legacy-coverage: ## One-shot coverage run (rebuilds, tears down after)
+	$(LEGACY) run --rm --build test vendor/bin/phpunit \
+		--coverage-html coverage/html --coverage-text; \
+		status=$$?; $(MAKE) --no-print-directory legacy-test-clean; exit $$status
+
 legacy-test-stop: ## Stop the long-lived test container and its database
 	@$(LEGACYT) rm -fsv test db-test >/dev/null 2>&1 || true
 	@echo "Test containers removed."
@@ -160,5 +181,6 @@ help: ## Show this help
         test-coverage test-watch test-again stan legacy-up legacy-down \
         legacy-destroy legacy-logs legacy-shell legacy-test \
         legacy-test-suite legacy-test-clean legacy-test-start lt lt-file \
-        lt-shell legacy-test-stop legacy-baseline prod-build prod-up \
+        lt-shell lt-coverage untested legacy-coverage \
+        legacy-test-stop legacy-baseline prod-build prod-up \
         prod-down prod-logs prod-backup prod-restore help

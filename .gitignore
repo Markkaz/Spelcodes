@@ -3,5 +3,5 @@ vendor
 .env
 /backup/*
 !/backup/.gitkeep
-
+/coverage
 baseline.txt

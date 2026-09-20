@@ -1,0 +1,30 @@
+# OPTIONAL FALLBACK - only needed if `php:5.6-cli` turns out not to ship phpdbg.
+#
+#   docker run --rm --platform linux/amd64 php:5.6-cli which phpdbg
+#
+# If that prints a path, you do not need this file at all. If it prints
+# nothing, append the block below to the `legacy-test` stage in
+# docker/php56/Dockerfile and drop the `phpdbg -qrr` prefix from the Makefile
+# coverage targets.
+#
+# Xdebug 2.5.5 is the last release supporting PHP 5.6. Installing it needs a
+# compiler, which needs apt, which needs the archived Debian repositories -
+# hence the sources rewrite. Expect this layer to be slow and slightly fragile.
+
+RUN set -eux; \
+    codename="$(sed -n 's/^deb [^ ]* \([a-z-]*\) .*/\1/p' /etc/apt/sources.list | head -1)"; \
+    printf 'deb http://archive.debian.org/debian %s main\n' "$codename" > /etc/apt/sources.list; \
+    echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99archive; \
+    apt-get -o Acquire::AllowInsecureRepositories=true update; \
+    apt-get install -y --no-install-recommends --allow-unauthenticated $PHPIZE_DEPS; \
+    pecl install xdebug-2.5.5; \
+    docker-php-ext-enable xdebug; \
+    apt-get purge -y --auto-remove $PHPIZE_DEPS; \
+    rm -rf /var/lib/apt/lists/*
+
+# Coverage mode only; step debugging would slow every run for no benefit here.
+RUN { \
+      echo 'xdebug.coverage_enable=1'; \
+      echo 'xdebug.remote_enable=0'; \
+      echo 'xdebug.profiler_enable=0'; \
+    } >> /usr/local/etc/php/conf.d/zz-app.ini

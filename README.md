@@ -12,9 +12,13 @@ Requires Docker Desktop and `make`. Nothing else.
 ```sh
 git clone https://github.com/Markkaz/Spelcodes.git
 cd Spelcodes
-cp .env.example .env     # only needed for production
 make help                # list all commands
 ```
+
+Database credentials come from the environment. All four Docker stacks inject
+them, so no setup is needed for `make` commands. To run tests or the site
+outside Docker, `cp .env.example .env` — there are no fallbacks in
+`Includes/connect.php`, so a missing variable throws.
 
 On Apple Silicon the legacy stack runs under emulation. No action needed.
 
@@ -37,15 +41,23 @@ make legacy-test         # full run, rebuilds, tears down after
 make legacy-baseline     # writes baseline.txt
 ```
 
-Fast loop:
+Fast loop — start the container once, then re-run in milliseconds:
 
 ```sh
-make legacy-test-start                          # once
+make legacy-test-start
 make lt                                         # full suite, no rebuild
 make lt ARGS="--filter it_adds_a_news_comment"
 make lt-file FILE=tests/Pages/LoginTest.php
 make lt-shell
 make legacy-test-stop
+```
+
+Coverage:
+
+```sh
+make lt-coverage         # HTML report in coverage/html
+make legacy-coverage     # one-shot, rebuilds and tears down
+make untested            # files with no test file at all
 ```
 
 There is no legacy production environment, by design. PHP 5.6 has been
