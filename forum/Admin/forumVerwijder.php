@@ -17,10 +17,11 @@ try {
     if((!$cUser -> checkSession()) && (!$cUser -> checkCookie()))
     {
         header('Location: ../../loginForm.php');
+        throw new ExitException();
     }
 
     /* Permissie controleren */
-    if(!$cUser -> m_iPermis & 4)
+    if(!($cUser -> m_iPermis & 4))
     {
         echo('Geen permissie...');
         throw new ExitException();
