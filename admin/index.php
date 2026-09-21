@@ -1,53 +1,58 @@
 <?php
-//error_reporting(E_ALL);
 
-/* Header importeren */
-include('Includes/header.php');
+use Webdevils\Spelcodes\ExitException;
 
-$cTPL -> setPlace('TITEL', 'Admin - Index');
-$cTPL -> setFile('CONTENT', __DIR__ . '/Templates/index.tpl');
-$cTPL -> parse();
+try {
+    //error_reporting(E_ALL);
 
-/* Users beheren */
-if($cUser -> m_iPermis & 8)
-{
-  $cTPL -> setBlock('USERS', 'users');
-}
+    /* Header importeren */
+    include('Includes/header.php');
 
-/* Consoles beheren */
-if($cUser -> m_iPermis & 16)
-{
-  $cTPL -> setBlock('CONSOLES', 'consoles');
-}
+    $cTPL -> setPlace('TITEL', 'Admin - Index');
+    $cTPL -> setFile('CONTENT', __DIR__ . '/Templates/index.tpl');
+    $cTPL -> parse();
 
-/* Spellen beheren */
-if(($cUser -> m_iPermis & 1) || ($cUser -> m_iPermis & 128))
-{
-  $cTPL -> setBlock('SPELLEN', 'spellen');
-}
+    /* Users beheren */
+    if($cUser -> m_iPermis & 8)
+    {
+        $cTPL -> setBlock('USERS', 'users');
+    }
 
-/* Nieuws beheren */
-if($cUser -> m_iPermis & 32)
-{
-  $cTPL -> setBlock('NIEUWS', 'nieuws');
-}
+    /* Consoles beheren */
+    if($cUser -> m_iPermis & 16)
+    {
+        $cTPL -> setBlock('CONSOLES', 'consoles');
+    }
 
-/* Links beheren */
-if($cUser -> m_iPermis & 64)
-{
-  $cTPL -> setBlock('LINKS', 'links');
-}
+    /* Spellen beheren */
+    if(($cUser -> m_iPermis & 1) || ($cUser -> m_iPermis & 128))
+    {
+        $cTPL -> setBlock('SPELLEN', 'spellen');
+    }
 
-/* Backup maken */
-if($cUser -> m_iPermis & 512)
-{
-  $cTPL -> setBlock('BACKUP', 'backup');
-}
+    /* Nieuws beheren */
+    if($cUser -> m_iPermis & 32)
+    {
+        $cTPL -> setBlock('NIEUWS', 'nieuws');
+    }
 
-/* Mail beheren */
-if($cUser -> m_iPermis & 1024)
-{
-  $cTPL -> setBlock('MAIL', 'mail');
-}
+    /* Links beheren */
+    if($cUser -> m_iPermis & 64)
+    {
+        $cTPL -> setBlock('LINKS', 'links');
+    }
 
-$cTPL -> show();
+    /* Backup maken */
+    if($cUser -> m_iPermis & 512)
+    {
+        $cTPL -> setBlock('BACKUP', 'backup');
+    }
+
+    /* Mail beheren */
+    if($cUser -> m_iPermis & 1024)
+    {
+        $cTPL -> setBlock('MAIL', 'mail');
+    }
+
+    $cTPL -> show();
+} catch (ExitException $e) {}

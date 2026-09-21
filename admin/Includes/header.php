@@ -1,4 +1,7 @@
 <?php
+
+use Webdevils\Spelcodes\ExitException;
+
 session_start();
 
 /* Classes importeren */
@@ -19,6 +22,7 @@ connectDB();
 if((!$cUser -> checkSession()) && (!$cUser -> checkCookie()))
 {
   header('Location: ../loginForm.php');
+  throw new ExitException();
 }
 
 /* Users beheren */
