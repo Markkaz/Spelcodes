@@ -14,6 +14,7 @@ class ConsoleTest extends TestCase
             'consoles',
             'spellen',
             'spellenview',
+            'stemmen',
         ];
     }
 
@@ -212,5 +213,89 @@ class ConsoleTest extends TestCase
 
         $this->assertContains('7 - starts with 7', $page);
         $this->assertNotContains('B - starts with B', $page);
+    }
+
+    /** @test */
+    public function it_shows_the_games_rating() {
+        $consoleId = ConsoleFactory::create(self::$pdo, 'Xbox');
+        $gameId = GameFactory::create(
+            self::$pdo,
+            $consoleId,
+            'Tony Hawk\'s Pro Skater',
+            'tony-hawk',
+            'Neversoft',
+            'Activision',
+            'https://google.com',
+            'https://activision.com'
+        );
+        GameFactory::vote(self::$pdo, $gameId, 4, '127.0.0.1');
+        GameFactory::vote(self::$pdo, $gameId, 3, '127.0.0.2');
+
+        GameFactory::create(
+            self::$pdo,
+            $consoleId,
+            'Tony Hawk\'s Pro Skater 2',
+            'tony-hawk2',
+            'Neversoft',
+            'Activision',
+            'https://google.com',
+            'https://activision.com'
+        );
+
+        $page = $this->visitPage(
+            __DIR__ . '/../../consoles.php',
+            [
+                'id' => $consoleId,
+            ]
+        );
+
+        $this->assertContains('Tony Hawk\'s Pro Skater', $page);
+        $this->assertContains('Tony Hawk\'s Pro Skater 2', $page);
+        $this->assertContainsInOrder([
+            'legester.gif', 'helester.gif', 'halvester.gif'
+        ], $page);
+    }
+
+    /** @test */
+    public function it_shows_the_games_rating_when_a_letter_is_selected()
+    {
+        $consoleId = ConsoleFactory::create(self::$pdo, 'Xbox');
+        $gameId = GameFactory::create(
+            self::$pdo,
+            $consoleId,
+            'Tony Hawk\'s Pro Skater',
+            'tony-hawk',
+            'Neversoft',
+            'Activision',
+            'https://google.com',
+            'https://activision.com'
+        );
+        GameFactory::vote(self::$pdo, $gameId, 4, '127.0.0.1');
+        GameFactory::vote(self::$pdo, $gameId, 3, '127.0.0.2');
+
+        GameFactory::create(
+            self::$pdo,
+            $consoleId,
+            'Tony Hawk\'s Pro Skater 2',
+            'tony-hawk2',
+            'Neversoft',
+            'Activision',
+            'https://google.com',
+            'https://activision.com'
+        );
+
+        $page = $this->visitPage(
+            __DIR__ . '/../../consoles.php',
+            [
+                'id' => $consoleId,
+                'letter' => 'T'
+            ]
+        );
+
+        $this->assertContains('Tony Hawk\'s Pro Skater', $page);
+        $this->assertContains('Tony Hawk\'s Pro Skater 2', $page);
+        $this->assertContainsInOrder([
+            'helester.gif', 'halvester.gif', 'legester.gif'
+        ], $page);
     }
 }

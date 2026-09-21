@@ -94,7 +94,7 @@ class GameTest extends TestCase
     /** @test */
     public function it_doesnt_show_a_voting_form_when_already_voted()
     {
-        $this->vote($this->gameId);
+        GameFactory::vote(self::$pdo, $this->gameId, 5, '127.0.0.1');
 
         $page = $this->visitPage(
             __DIR__ . '/../../gameview.php',
@@ -102,6 +102,19 @@ class GameTest extends TestCase
         );
 
         $this->assertNotContains('stemmen.php?spelid=' . $this->gameId, $page);
+    }
+
+    /** @test */
+    public function it_shows_the_current_rating() {
+        GameFactory::vote(self::$pdo, $this->gameId, 4, '127.0.0.1');
+        GameFactory::vote(self::$pdo, $this->gameId, 3, '127.0.0.2');
+
+        $page = $this->visitPage(
+            __DIR__ . '/../../gameview.php',
+            ['id' => $this->gameId]
+        );
+
+        $this->assertContainsInOrder(['helester.gif', 'halvester.gif', 'legester.gif'], $page);
     }
 
     /** @test */
