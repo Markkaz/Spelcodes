@@ -9,6 +9,9 @@
         <testsuite name="forum/admin">
             <directory>./tests/Forum/Admin</directory>
         </testsuite>
+        <testsuite name="admin">
+            <directory>./tests/Admin</directory>
+        </testsuite>
     </testsuites>
 
     <filter>
