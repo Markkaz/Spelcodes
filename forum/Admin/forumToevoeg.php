@@ -3,6 +3,7 @@
 /* Header importeren */
 
 use Webdevils\Spelcodes\ExitException;
+use Webdevils\Spelcodes\Permissions;
 
 try {
     include('Includes/header.php');
@@ -11,10 +12,11 @@ try {
     if((!$cUser -> checkSession()) && (!$cUser -> checkCookie()))
     {
         header('Location: ../../loginForm.php');
+        throw new ExitException();
     }
 
     /* Permissie controleren */
-    if(!$cUser -> m_iPermis & 4)
+    if(!($cUser -> m_iPermis & Permissions::FORUM_ADMIN))
     {
         echo('Geen permissie...');
         throw new ExitException();
