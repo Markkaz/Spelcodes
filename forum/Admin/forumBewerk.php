@@ -22,7 +22,7 @@ try {
     }
 
     /* Permissie controleren */
-    if(!$cUser -> m_iPermis & 4)
+    if(!($cUser -> m_iPermis & 4))
     {
         echo('Geen permissie...');
         throw new ExitException();
