@@ -2,7 +2,7 @@
 
 namespace Webdevils\Spelcodes;
 
-interface Permissions
+class Permissions
 {
     const MANAGE_SPELLEN = 1;
     const FORUM_MODERATOR = 2;
@@ -15,4 +15,18 @@ interface Permissions
     const MANAGE_FAVORIETEN = 256;
     const MANAGE_BACKUPS = 512;
     const MANAGE_MAIL = 1024;
+
+    public static function all() {
+        return self::MANAGE_SPELLEN |
+            self::FORUM_MODERATOR |
+            self::FORUM_ADMIN |
+            self::MANAGE_USERS |
+            self::MANAGE_CONSOLES |
+            self::MANAGE_NIEUWS |
+            self::MANAGE_LINKS |
+            self::MANAGE_SPELLEN_TOPICS |
+            self::MANAGE_FAVORIETEN |
+            self::MANAGE_BACKUPS |
+            self::MANAGE_MAIL;
+    }
 }
