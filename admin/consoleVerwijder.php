@@ -16,7 +16,7 @@ try {
     }
 
     /* Permissie controleren */
-    if(!$cUser -> m_iPermis & 16)
+    if(!($cUser -> m_iPermis & 16))
     {
         echo('Geen permissie...');
         throw new ExitException();
