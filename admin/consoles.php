@@ -9,7 +9,7 @@ try {
     include('Includes/header.php');
 
     /* Permissie controleren */
-    if((!$cUser -> m_iPermis & 16) && (!$cUser -> m_iPermis & 256))
+    if((!($cUser -> m_iPermis & 16)) && (!($cUser -> m_iPermis & 256)))
     {
         echo('Geen permissie...');
         throw new ExitException();
