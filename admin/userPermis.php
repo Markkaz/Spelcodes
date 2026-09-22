@@ -15,7 +15,7 @@ try {
         throw new ExitException();
     }
 
-    if(!$cUser -> m_iPermis & 8)
+    if(!($cUser -> m_iPermis & 8))
     {
         echo('Geen permissie...');
         throw new ExitException();
