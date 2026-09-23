@@ -14,7 +14,7 @@ try {
         throw new ExitException();
     }
 
-    if (!$cUser->m_iPermis & 256) {
+    if (!($cUser->m_iPermis & 256)) {
         echo('Geen permissie...');
         throw new ExitException();
     }
