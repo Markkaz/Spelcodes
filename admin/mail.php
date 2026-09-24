@@ -7,7 +7,7 @@ try {
     include('Includes/header.php');
 
     /* Permissie controleren */
-    if(!$cUser -> m_iPermis & 1024)
+    if(!($cUser -> m_iPermis & 1024))
     {
         echo('Geen permissie...');
         throw new ExitException();
